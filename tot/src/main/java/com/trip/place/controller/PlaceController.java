@@ -17,7 +17,7 @@ public class PlaceController {
         return places;
     }
 
-    @GetMapping
+    @GetMapping("/{id}")
     public PlaceDto getPlace(@PathVariable(value = "id") Long placeId) {
         PlaceDto place = new PlaceDto();
         return place;
