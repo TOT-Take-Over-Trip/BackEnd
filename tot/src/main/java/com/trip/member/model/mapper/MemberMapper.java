@@ -1,5 +1,21 @@
 package com.trip.member.model.mapper;
 
+import com.trip.member.model.MemberDto;
+import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
+
+@Mapper
 public interface MemberMapper {
+
+    List<MemberDto> selectAllMember();
+
+    MemberDto selectMemberById(int memberId);
+
+    void insertMember(MemberDto memberDto);
+
+    void updateMember(MemberDto memberDto);
+
+    void deleteMemberById(int memberId);
 
 }
