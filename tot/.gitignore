@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### dbinfo ###
+src/main/resources/dbinfo.properties
