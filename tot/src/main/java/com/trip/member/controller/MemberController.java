@@ -1,36 +1,40 @@
 package com.trip.member.controller;
 
 import com.trip.member.model.MemberDto;
+import com.trip.member.service.MemberService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/members")
 public class MemberController {
 
-    // TODO: 구현해야 함
-    @GetMapping
-    public List<MemberDto> getMembers() {
-        return new ArrayList<>();
+    private final MemberService memberService;
+
+    // TODO: 이거 admin 인지 확인해야 될 거 같은데???
+    // TODO: parameter 로 memberId 넘겨줘야할 거 같은데
+    @GetMapping("/")
+    public ResponseEntity<?> getMembers() {
+        return ResponseEntity.ok(memberService.getMembers());
     }
 
-    // TODO: 구현해야 함
     @GetMapping("/{memberId}")
-    public MemberDto getMember(@PathVariable("memberId") Long memberId) {
-        return new MemberDto();
+    public ResponseEntity<?> getMember(@PathVariable("memberId") int memberId) {
+        return ResponseEntity.ok(memberService.getMemberById(memberId));
     }
 
-    // TODO: 구현해야 함
     @PutMapping("/{memberId}")
-    public MemberDto updateMember(@PathVariable("memberId") Long memberId, @RequestBody MemberDto memberDto) {
-        return new MemberDto();
+    public void updateMember(@PathVariable("memberId") int memberId, @RequestBody MemberDto memberDto) {
+        memberService.updateMember(memberId, memberDto);
     }
 
-    // TODO: 구현해야 함
     @PatchMapping("/{memberId}")
-    public void deleteMember(@PathVariable("memberId") Long memberId) {
-
+    public void deleteMember(@PathVariable("memberId") int memberId) {
+        memberService.deleteMember(memberId);
     }
 }

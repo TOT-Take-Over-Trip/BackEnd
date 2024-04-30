@@ -8,7 +8,7 @@ import java.util.List;
 @Mapper
 public interface MemberMapper {
 
-    List<MemberDto> selectAllMember();
+    List<MemberDto> selectAllMembers();
 
     MemberDto selectMemberById(int memberId);
 

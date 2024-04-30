@@ -4,5 +4,71 @@
 
 <mapper namespace="com.trip.member.model.mapper.MemberMapper">
 
+	<resultMap type="memberDto" id="member">
+		<result column="member_id" property="memberId" />
+		<result column="name" property="name" />
+		<result column="id" property="id" />
+		<result column="password" property="password" />
+		<result column="email" property="email" />
+		<result column="phone_number" property="phoneNumber" />
+		<result column="point" property="point" />
+		<result column="profile_image" property="profileImage" />
+		<result column="created_date" property="createdDate" />
+		<result column="updated_date" property="updatedDate" />
+		<result column="status" property="status" />
+	</resultMap>
+
+	<select id="selectAllMembers">
+		SELECT
+			member_id, name, id, password, email, phone_number, point,
+			profile_image, created_date, updated_date, status
+		FROM
+		    member
+	</select>
+
+	<select id="selectMemberById" parameterType="int" resultMap="member">
+		SELECT
+			member_id, name, id, password, email, phone_number, point,
+		    profile_image, created_date, updated_date, status
+		FROM
+		    member
+		WHERE
+		    member_id = #{memberId}
+	</select>
+
+	<insert id="insertMember" parameterType="MemberDto">
+		INSERT INTO MEMBER(member_id, name, id, password, email, phone_number, point,
+						   profile_image, created_date, updated_date, status)
+		VALUES(#{memberId}, #{name}, #{id}, #{password}, #{email}, #{phoneNumber},
+		       #{point}, #{profileImage}, #{createdDate}, #{updatedDate}, #{status})
+	</insert>
+
+	<update id="updateMember" parameterType="MemberDto">
+		UPDATE
+		    MEMBER
+		SET
+		    name = #{name},
+		    id = #{id},
+		    password = #{password},
+		    email = #{email},
+		    phone_number = #{phoneNumber},
+		    point = #{point},
+		    profile_image = #{profileImage},
+		    created_date = #{createdDate},
+		    updated_date = #{updatedDate},
+		    status = #{status}
+		WHERE
+			member_id = #{memberId}
+	</update>
+
+	<update id="deleteMemberById" parameterType="Long">
+		UPDATE
+		    MEMBER
+		SET
+		    status = #{status}
+		WHERE
+			member_id = #{memberId}
+	</update>
+	
 	
 </mapper>
