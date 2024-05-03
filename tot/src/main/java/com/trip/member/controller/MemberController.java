@@ -18,7 +18,7 @@ public class MemberController {
 
     // TODO: 이거 admin 인지 확인해야 될 거 같은데???
     // TODO: parameter 로 memberId 넘겨줘야할 거 같은데
-    @GetMapping("/")
+    @GetMapping
     public ResponseEntity<?> getMembers() {
         return ResponseEntity.ok(memberService.getMembers());
     }
