@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="RunManager" selected="Spring Boot.TotApplication">
+    <configuration name="All in enjoytrip_framework_s10-team05" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="enjoytrip_framework_s10-team05" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TotApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="tot" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.trip.tot.TotApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.All in enjoytrip_framework_s10-team05" />
+      </list>
+    </recent_temporary>
+  </component>
+</project>
