@@ -24,6 +24,11 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
+    public MemberDto getMemberByLoginId(String id) {
+        return memberMapper.selectMemberByLoginId(id);
+    }
+
+    @Override
     public void updateMember(int memberId, MemberDto memberDto) {
         memberMapper.updateMember(memberDto);
     }

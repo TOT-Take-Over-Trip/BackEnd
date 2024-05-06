@@ -36,6 +36,16 @@
 		    member_id = #{memberId}
 	</select>
 
+	<select id="selectMemberByLoginId" parameterType="String" resultMap="member">
+		SELECT
+			member_id, name, id, password, email, phone_number, point,
+			profile_image, created_date, updated_date, status
+		FROM
+			member
+		WHERE
+			id = #{id}
+	</select>
+
 	<insert id="insertMember" parameterType="MemberDto">
 		INSERT INTO MEMBER(member_id, name, id, password, email, phone_number, point,
 						   profile_image, created_date, updated_date, status)

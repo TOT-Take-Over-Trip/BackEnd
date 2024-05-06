@@ -10,6 +10,8 @@ public interface MemberService {
 
     MemberDto getMemberById(int memberId);
 
+    MemberDto getMemberByLoginId(String id);
+
     void updateMember(int memberId, MemberDto memberDto);
 
     void deleteMember(int memberId);
