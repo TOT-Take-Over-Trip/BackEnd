@@ -12,6 +12,8 @@ public interface MemberService {
 
     MemberDto getMemberByLoginId(String id);
 
+    void createMember(MemberDto memberDto);
+
     void updateMember(int memberId, MemberDto memberDto);
 
     void deleteMember(int memberId);

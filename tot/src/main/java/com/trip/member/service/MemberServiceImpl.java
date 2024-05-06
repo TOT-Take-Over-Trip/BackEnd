@@ -29,6 +29,11 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
+    public void createMember(MemberDto memberDto) {
+        memberMapper.insertMember(memberDto);
+    }
+
+    @Override
     public void updateMember(int memberId, MemberDto memberDto) {
         memberMapper.updateMember(memberDto);
     }
