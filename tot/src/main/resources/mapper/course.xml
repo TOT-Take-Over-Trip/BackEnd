@@ -4,5 +4,76 @@
 
 <mapper namespace="com.trip.course.model.mapper.CourseMapper">
 
+    <resultMap id="course" type="courseDto">
+        <result column="course_id" property="courseId" />
+        <result column="member_id" property="memberId" />
+        <result column="title" property="title" />
+        <result column="content" property="content" />
+        <result column="hit" property="hit" />
+        <result column="created_date" property="createdDate" />
+        <result column="updated_date" property="updatedDate" />
+        <result column="status" property="status" />
+    </resultMap>
+
+    <!--  전체 코스 조회  -->
+    <!-- TODO: 이거 status active인 애들만 받아옴   -->
+    <select id="selectAllCourses" resultMap="course">
+        SELECT
+            course_id, member_id, title, content, hit, created_date, updated_date, status
+        FROM
+            course
+        WHERE
+            status = "active"
+    </select>
+
+    <!--  특정 코스 조회 -->
+    <select id="selectCourseById" parameterType="Long" resultMap="course">
+        SELECT
+            course_id, member_id, title, content, hit, created_date, updated_date, status
+        FROM
+            course
+        WHERE
+            course_id = #{id}
+    </select>
+
+    <insert id="insertCourse" parameterType="CourseDto">
+        INSERT INTO course(course_id, member_id, title, content, hit, created_date, updated_date, status)
+        VALUES (#{courseId}, #{memberId}, #{title}, #{content}, #{hit}, #{createdDate}, #{updatedDate}, #{status})
+    </insert>
+
+    <update id="modifyCourse" parameterType="CourseDto">
+        UPDATE
+            course
+        SET
+            member_id = #{memberId}
+        ,   title = #{title}
+        ,   content = #{content}
+        ,   hit = #{hit}
+        ,   created_date = #{createdDate}
+        ,   updated_date = now()
+        ,   status = #{status}
+        WHERE
+            course_id = #{courseId}
+    </update>
+
+    <update id="takeOverCourse" parameterType="CourseDto">
+        UPDATE
+            course
+        SET
+            member_id = #{memberId}
+        ,   updated_date = now()
+        WHERE
+            course_id = #{courseId}
+    </update>
+
+    <update id="deleteCourse" parameterType="CourseDto">
+        UPDATE
+            course
+        SET
+            status = "inactive"
+        WHERE
+            course_id = #{courseId}
+    </update>
+
 
 </mapper>

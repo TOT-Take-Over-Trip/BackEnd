@@ -75,7 +75,7 @@
 		UPDATE
 		    MEMBER
 		SET
-		    status = #{status}
+		    status = "inactive"
 		WHERE
 			member_id = #{memberId}
 	</update>
