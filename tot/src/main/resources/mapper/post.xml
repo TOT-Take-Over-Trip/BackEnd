@@ -4,5 +4,57 @@
 
 <mapper namespace="com.trip.post.model.mapper.PostMapper">
 
+  <resultMap type="postDto" id="post">
+    <result column="post_id" property="postId" />
+    <result column="member_id" property="memberId" />
+    <result column="title" property="title" />
+    <result column="content" property="content" />
+    <result column="created_date" property="createdDate" />
+    <result column="updated_date" property="updatedDate" />
+    <result column="status" property="status" />
+  </resultMap>
+
+  <select id="selectAllPosts" resultMap="post">
+    SELECT
+      post_id, member_id, title, content, created_date, updated_date, status
+    FROM
+      post
+  </select>
+
+  <select id="selectPostById" parameterType="int" resultMap="post">
+    SELECT
+      post_id, member_id, title, content, created_date, updated_date, status
+    FROM
+      post
+    WHERE
+      post_id = #{postId}
+  </select>
+
+  <insert id="insertPost" parameterType="PostDto">
+    INSERT INTO Post(member_id, title, content)
+    VALUES(#{memberId}, #{title}, #{content})
+  </insert>
+
+  <update id="updatePost" parameterType="PostDto">
+    UPDATE
+      POST
+    SET
+      title = #{title}
+      ,   content = #{content}
+      ,       created_date = #{createdDate}
+      ,       updated_date = #{updatedDate}
+      ,       status = #{status}
+    WHERE
+      post_id = #{postId}
+  </update>
+
+  <update id="deletePostById" parameterType="int">
+    UPDATE
+      POST
+    SET
+      status = #{status}
+    WHERE
+      post_id = #{postId}
+  </update>
 
 </mapper>

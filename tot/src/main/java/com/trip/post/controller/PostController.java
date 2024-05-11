@@ -1,41 +1,42 @@
 package com.trip.post.controller;
 
 import com.trip.post.model.PostDto;
+import com.trip.post.service.PostService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/posts")
+@CrossOrigin("*")
 public class PostController {
 
-    // TODO: 구현해야 함
+    private final PostService postService;
+
     @GetMapping
     public List<PostDto> getPosts() {
-        return new ArrayList<PostDto>();
+        return postService.getPosts();
     }
 
-    // TODO: 구현해야 함
     @GetMapping("/{postId}")
-    public PostDto getPost(@PathVariable Long postId) {
-        return new PostDto();
+    public PostDto getPost(@PathVariable int postId) {
+        return postService.getPostById(postId);
     }
 
-    // TODO: 구현해야 함
-    @PostMapping
+    @PostMapping("/new")
     public void addPost(@RequestBody PostDto postDto) {
-
+        postService.createPost(postDto);
     }
 
-    // TODO: 구현해야 함
     @PutMapping("/{postId}")
-    public void updatePost(@PathVariable Long postId, @RequestBody PostDto postDto) {
-
+    public void updatePost(@PathVariable int postId, @RequestBody PostDto postDto) {
+        postService.updatePost(postId,postDto);
     }
 
-    // TODO: 구현해야 함
-    public void deletePost(@PathVariable Long postId) {
-
+    public void deletePost(@PathVariable int postId) {
+        postService.deletePost(postId);
     }
 }

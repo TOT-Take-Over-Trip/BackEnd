@@ -4,16 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be78911b-030a-4199-bc8a-9249caaec006" name="Changes" comment="feat: 멤버 로그인 아이디로 조회 추가">
+    <list default="true" id="be78911b-030a-4199-bc8a-9249caaec006" name="Changes" comment="feat: JWT를 이용한 회원가입, 로그인 기능 구현">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tot/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tot/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/auth/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/auth/controller/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/auth/model/dto/SignUpUserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/auth/model/dto/SignUpUserDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/auth/service/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/auth/service/AuthService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/auth/service/AuthServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/auth/service/AuthServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/member/model/MemberDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/member/model/MemberDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/member/service/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/member/service/MemberService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/member/service/MemberServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/member/service/MemberServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/member/controller/MemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/member/controller/MemberController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/post/controller/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/post/controller/PostController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/post/model/PostDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/post/model/PostDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/post/model/mapper/PostMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/post/model/mapper/PostMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tot/src/main/resources/mapper/post.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/resources/mapper/post.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +28,14 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -46,10 +51,13 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/tot/src/main/resources" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -61,6 +69,9 @@
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.trip" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.trip.post.service" />
     </key>
   </component>
   <component name="RunManager">
@@ -95,7 +106,9 @@
       <workItem from="1714693790490" duration="766000" />
       <workItem from="1714704870251" duration="617000" />
       <workItem from="1714887741930" duration="200000" />
-      <workItem from="1714887945400" duration="18738000" />
+      <workItem from="1714887945400" duration="20429000" />
+      <workItem from="1715086876707" duration="627000" />
+      <workItem from="1715402360819" duration="8637000" />
     </task>
     <task id="LOCAL-00001" summary="feat: 멤버 로그인 아이디로 조회 추가">
       <created>1714974223046</created>
@@ -104,7 +117,28 @@
       <option name="project" value="LOCAL" />
       <updated>1714974223046</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="feat: 회원가입을 위한 멤버 insert 추가">
+      <created>1714981601285</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1714981601285</updated>
+    </task>
+    <task id="LOCAL-00003" summary="feat: Spring Security와 JWT를 위한 설정 추가">
+      <created>1714981659692</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1714981659692</updated>
+    </task>
+    <task id="LOCAL-00004" summary="feat: JWT를 이용한 회원가입, 로그인 기능 구현">
+      <created>1714981716359</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1714981716359</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -123,6 +157,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat: 멤버 로그인 아이디로 조회 추가" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: 멤버 로그인 아이디로 조회 추가" />
+    <MESSAGE value="feat: 회원가입을 위한 멤버 insert 추가" />
+    <MESSAGE value="feat: Spring Security와 JWT를 위한 설정 추가" />
+    <MESSAGE value="feat: JWT를 이용한 회원가입, 로그인 기능 구현" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: JWT를 이용한 회원가입, 로그인 기능 구현" />
   </component>
 </project>
