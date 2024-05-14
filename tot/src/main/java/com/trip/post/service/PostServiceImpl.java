@@ -1,7 +1,8 @@
 package com.trip.post.service;
 
 import com.trip.post.model.PostDto;
-import com.trip.post.model.dto.GetPostDto;
+import com.trip.post.model.dto.PostDetailResponseDto;
+import com.trip.post.model.dto.PostsResponseDto;
 import com.trip.post.model.mapper.PostMapper;
 
 import java.time.LocalDate;
@@ -19,8 +20,8 @@ public class PostServiceImpl implements PostService{
     private final PostMapper postMapper;
 
     @Override
-    public GetPostDto getPosts() {
-        GetPostDto getPostDto = new GetPostDto();
+    public PostsResponseDto getPosts() {
+        PostsResponseDto postsResponseDto = new PostsResponseDto();
         List<PostDto> posts = postMapper.selectAllPosts();  //전체 post 데이터
         Collections.sort(posts, new Comparator<PostDto>() {
             @Override
@@ -48,14 +49,17 @@ public class PostServiceImpl implements PostService{
                 break;
             }
         }
-        getPostDto.setPosts(posts);
-        getPostDto.setTopRankPosts(topRankPosts);
-        return getPostDto;
+        postsResponseDto.setPosts(posts);
+        postsResponseDto.setTopRankPosts(topRankPosts);
+        return postsResponseDto;
     }
 
     @Override
-    public PostDto getPostById(int postId) {
-        return postMapper.selectPostById(postId);
+    public PostDetailResponseDto getPostById(int postId) {
+        PostDetailResponseDto postDetail = new PostDetailResponseDto();
+        postDetail.setPostDto(postMapper.selectPostById(postId));
+        postDetail.setPostCommentDtos(postMapper.selectPostCommentsById(postId));
+        return postDetail;
     }
 
     @Override

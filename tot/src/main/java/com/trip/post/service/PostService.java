@@ -1,15 +1,14 @@
 package com.trip.post.service;
 
 import com.trip.post.model.PostDto;
-import com.trip.post.model.dto.GetPostDto;
-
-import java.util.List;
+import com.trip.post.model.dto.PostDetailResponseDto;
+import com.trip.post.model.dto.PostsResponseDto;
 
 public interface PostService {
 
-    GetPostDto getPosts();
+    PostsResponseDto getPosts();
 
-    PostDto getPostById(int postId);
+    PostDetailResponseDto getPostById(int postId);
 
     void createPost(PostDto postDto);
 

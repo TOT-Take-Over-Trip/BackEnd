@@ -15,6 +15,16 @@
     <result column="updated_date" property="updatedDate" />
     <result column="status" property="status" />
   </resultMap>
+  
+  <resultMap type="PostCommentDto" id="postComment">
+    <result column="post_comment_id" property="postCommentId" />
+    <result column="post_id" property="postId" />
+    <result column="member_id" property="memberId" />
+    <result column="content" property="content" />
+    <result column="created_date" property="createdDate" />
+    <result column="updated_date" property="updatedDate" />
+    <result column="status" property="status" />
+  </resultMap>
 
   <select id="selectAllPosts" resultMap="post">
     SELECT
@@ -25,13 +35,22 @@
 
   <select id="selectPostById" parameterType="int" resultMap="post">
     SELECT
-      post_id, member_id, title, content, created_date, updated_date, status
+      post_id, member_id, title, content, thumbnail, post_like_count, created_date, updated_date, status
     FROM
       post
     WHERE
       post_id = #{postId}
   </select>
 
+  <select id="selectPostCommentsById" parameterType="int" resultMap="postComment">
+    SELECT
+      post_comment_id, post_id, member_id, content, created_date, updated_date, status
+    FROM
+      post_comment
+    WHERE
+      post_id = #{postId}
+  </select>
+  
   <insert id="insertPost" parameterType="PostDto">
     INSERT INTO Post(member_id, title, content)
     VALUES(#{memberId}, #{title}, #{content})

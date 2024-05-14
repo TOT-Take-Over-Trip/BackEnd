@@ -1,13 +1,11 @@
 package com.trip.post.controller;
 
 import com.trip.post.model.PostDto;
-import com.trip.post.model.dto.GetPostDto;
+import com.trip.post.model.dto.PostDetailResponseDto;
+import com.trip.post.model.dto.PostsResponseDto;
 import com.trip.post.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -18,12 +16,12 @@ public class PostController {
     private final PostService postService;
 
     @GetMapping
-    public GetPostDto getPosts() {
+    public PostsResponseDto getPosts() {
         return postService.getPosts();
     }
 
     @GetMapping("/{postId}")
-    public PostDto getPost(@PathVariable int postId) {
+    public PostDetailResponseDto getPost(@PathVariable int postId) {
         return postService.getPostById(postId);
     }
 

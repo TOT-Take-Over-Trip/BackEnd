@@ -7,7 +7,8 @@
     <list default="true" id="be78911b-030a-4199-bc8a-9249caaec006" name="Changes" comment="feat: JWT를 이용한 회원가입, 로그인 기능 구현">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/post/controller/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/post/controller/PostController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/post/model/PostDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/post/model/PostDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/post/model/dto/GetPostDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/post/model/dto/PostsResponseDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/post/model/mapper/PostMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/post/model/mapper/PostMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/post/service/PostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/post/service/PostService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/post/service/PostServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/post/service/PostServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tot/src/main/resources/mapper/post.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/resources/mapper/post.xml" afterDir="false" />
@@ -39,29 +40,16 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 5
-}</component>
   <component name="ProjectId" id="2fcUlrDHZjSiMVXeHMGcSFCKHxf" />
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;Spring Boot.TotApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
-  }
-}</component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+  </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.trip.auth.service" />
@@ -79,9 +67,9 @@
   </component>
   <component name="RunManager">
     <configuration name="TotApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="tot" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.trip.tot.TotApplication" />
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>

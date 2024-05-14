@@ -9,7 +9,7 @@ import java.util.List;
 
 @Getter
 @Setter
-public class GetPostDto {
+public class PostsResponseDto {
     List<PostDto> Posts = new ArrayList<>();
     List<PostDto> topRankPosts = new ArrayList<>();
 }
