@@ -48,9 +48,9 @@
 
 	<insert id="insertMember" parameterType="MemberDto">
 		INSERT INTO MEMBER(member_id, name, id, password, email, phone_number,
-						   profile_image, created_date, updated_date, status)
+						   profile_image)
 		VALUES(#{memberId}, #{name}, #{id}, #{password}, #{email}, #{phoneNumber},
-		       #{profileImage}, #{createdDate}, #{updatedDate}, #{status})
+		       #{profileImage})
 	</insert>
 
 	<update id="updateMember" parameterType="MemberDto">
