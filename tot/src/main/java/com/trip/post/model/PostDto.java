@@ -11,6 +11,8 @@ public class PostDto {
     private int memberId;
     private String title;
     private String content;
+    private String thumbnail;
+    private int postLikeCount;
     private String createdDate;
     private String updatedDate;
     private String status;

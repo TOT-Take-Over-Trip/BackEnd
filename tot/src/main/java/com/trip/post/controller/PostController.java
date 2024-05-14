@@ -1,6 +1,7 @@
 package com.trip.post.controller;
 
 import com.trip.post.model.PostDto;
+import com.trip.post.model.dto.GetPostDto;
 import com.trip.post.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +18,7 @@ public class PostController {
     private final PostService postService;
 
     @GetMapping
-    public List<PostDto> getPosts() {
+    public GetPostDto getPosts() {
         return postService.getPosts();
     }
 

@@ -9,6 +9,8 @@
     <result column="member_id" property="memberId" />
     <result column="title" property="title" />
     <result column="content" property="content" />
+    <result column="thumbnail" property="thumbnail" />
+    <result column="post_like_count" property="postLikeCount" />
     <result column="created_date" property="createdDate" />
     <result column="updated_date" property="updatedDate" />
     <result column="status" property="status" />
@@ -16,7 +18,7 @@
 
   <select id="selectAllPosts" resultMap="post">
     SELECT
-      post_id, member_id, title, content, created_date, updated_date, status
+      post_id, member_id, title, content, thumbnail, post_like_count, created_date, updated_date, status
     FROM
       post
   </select>
