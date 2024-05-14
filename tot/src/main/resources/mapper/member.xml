@@ -47,10 +47,10 @@
 	</select>
 
 	<insert id="insertMember" parameterType="MemberDto">
-		INSERT INTO MEMBER(member_id, name, id, password, email, phone_number, point,
+		INSERT INTO MEMBER(member_id, name, id, password, email, phone_number,
 						   profile_image, created_date, updated_date, status)
 		VALUES(#{memberId}, #{name}, #{id}, #{password}, #{email}, #{phoneNumber},
-		       #{point}, #{profileImage}, #{createdDate}, #{updatedDate}, #{status})
+		       #{profileImage}, #{createdDate}, #{updatedDate}, #{status})
 	</insert>
 
 	<update id="updateMember" parameterType="MemberDto">
