@@ -5,19 +5,27 @@ import com.trip.post.model.dto.PostDetailResponseDto;
 import com.trip.post.model.dto.PostsResponseDto;
 import com.trip.post.model.mapper.PostMapper;
 
+import java.io.File;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.time.temporal.ChronoUnit;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 @Service
 @RequiredArgsConstructor
 public class PostServiceImpl implements PostService{
 
     private final PostMapper postMapper;
+
+    //파일 저장 위치
+    @Value("${file.dir}")
+    private String fileDir;
 
     @Override
     public PostsResponseDto getPosts() {
@@ -63,7 +71,19 @@ public class PostServiceImpl implements PostService{
     }
 
     @Override
-    public void createPost(PostDto postDto) {
+    public void createPost(PostDto postDto, MultipartFile thumbnail) throws IOException {
+        //파일 업로드 로직
+        String fullPath = "";
+        if(thumbnail!=null){
+            //확장자 추출
+            int pos = thumbnail.getOriginalFilename().lastIndexOf(".");
+            String ext = thumbnail.getOriginalFilename().substring(pos+1);
+
+            String uuid = UUID.randomUUID().toString();
+            fullPath = fileDir + uuid + "." + ext;
+            thumbnail.transferTo(new File(fullPath));
+            postDto.setThumbnail(fullPath);
+        }
         postMapper.insertPost(postDto);
     }
 

@@ -52,8 +52,8 @@
   </select>
   
   <insert id="insertPost" parameterType="PostDto">
-    INSERT INTO Post(member_id, title, content)
-    VALUES(#{memberId}, #{title}, #{content})
+    INSERT INTO Post(member_id, title, content, thumbnail)
+    VALUES(#{memberId}, #{title}, #{content}, #{thumbnail})
   </insert>
 
   <update id="updatePost" parameterType="PostDto">
