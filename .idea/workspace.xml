@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be78911b-030a-4199-bc8a-9249caaec006" name="Changes" comment="feat: post 썸네일 이미지 기능 추가 - 파일 업로드 처리">
+    <list default="true" id="be78911b-030a-4199-bc8a-9249caaec006" name="Changes" comment="feat: 썸네일 이미지 Base64 인코딩 하여 전송">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/post/controller/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/post/controller/PostController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/post/service/PostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/post/service/PostService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/post/service/PostServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/post/service/PostServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/post/model/PostDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/post/model/PostDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/post/model/dto/PostCommentDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/post/model/dto/PostCommentDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tot/src/main/resources/mapper/post.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/resources/mapper/post.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -105,7 +104,7 @@
       <workItem from="1715648779951" duration="61000" />
       <workItem from="1715650226817" duration="11861000" />
       <workItem from="1715774114170" duration="7185000" />
-      <workItem from="1715817640110" duration="7133000" />
+      <workItem from="1715817640110" duration="11790000" />
     </task>
     <task id="LOCAL-00001" summary="feat: 멤버 로그인 아이디로 조회 추가">
       <created>1714974223046</created>
@@ -149,7 +148,14 @@
       <option name="project" value="LOCAL" />
       <updated>1715781066644</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="feat: 썸네일 이미지 Base64 인코딩 하여 전송">
+      <created>1715826260644</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1715826260644</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -173,6 +179,7 @@
     <MESSAGE value="feat: JWT를 이용한 회원가입, 로그인 기능 구현" />
     <MESSAGE value="feat: post 단일 조회 구현 - Post 정보와 Post 댓글 리스트를 응답으로 반환" />
     <MESSAGE value="feat: post 썸네일 이미지 기능 추가 - 파일 업로드 처리" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: post 썸네일 이미지 기능 추가 - 파일 업로드 처리" />
+    <MESSAGE value="feat: 썸네일 이미지 Base64 인코딩 하여 전송" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: 썸네일 이미지 Base64 인코딩 하여 전송" />
   </component>
 </project>

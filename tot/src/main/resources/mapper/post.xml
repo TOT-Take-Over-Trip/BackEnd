@@ -7,6 +7,7 @@
   <resultMap type="postDto" id="post">
     <result column="post_id" property="postId" />
     <result column="member_id" property="memberId" />
+    <result column="member_name" property="memberName" />
     <result column="title" property="title" />
     <result column="content" property="content" />
     <result column="thumbnail" property="thumbnail" />
@@ -20,6 +21,7 @@
     <result column="post_comment_id" property="postCommentId" />
     <result column="post_id" property="postId" />
     <result column="member_id" property="memberId" />
+    <result column="member_name" property="memberName" />
     <result column="content" property="content" />
     <result column="created_date" property="createdDate" />
     <result column="updated_date" property="updatedDate" />
@@ -28,7 +30,7 @@
 
   <select id="selectAllPosts" resultMap="post">
     SELECT
-      post_id, member_id, title, content, thumbnail, post_like_count, created_date, updated_date, status
+      post_id, member_id, member_name, title, content, thumbnail, post_like_count, created_date, updated_date, status
     FROM
       post
     WHERE status = 'active'
@@ -36,7 +38,7 @@
 
   <select id="selectPostById" parameterType="int" resultMap="post">
     SELECT
-      post_id, member_id, title, content, thumbnail, post_like_count, created_date, updated_date, status
+      post_id, member_id, member_name, title, content, thumbnail, post_like_count, created_date, updated_date, status
     FROM
       post
     WHERE
@@ -45,7 +47,7 @@
 
   <select id="selectPostCommentsById" parameterType="int" resultMap="postComment">
     SELECT
-      post_comment_id, post_id, member_id, content, created_date, updated_date, status
+      post_comment_id, post_id, member_id, member_name, content, created_date, updated_date, status
     FROM
       post_comment
     WHERE
@@ -53,8 +55,8 @@
   </select>
   
   <insert id="insertPost" parameterType="PostDto">
-    INSERT INTO Post(member_id, title, content, thumbnail)
-    VALUES(#{memberId}, #{title}, #{content}, #{thumbnail})
+    INSERT INTO Post(member_id, member_name, title, content, thumbnail)
+    VALUES(#{memberId}, #{memberName}, #{title}, #{content}, #{thumbnail})
   </insert>
 
   <update id="updatePost" parameterType="PostDto">
