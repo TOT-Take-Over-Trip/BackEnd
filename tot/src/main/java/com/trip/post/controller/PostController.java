@@ -19,7 +19,12 @@ public class PostController {
 
     @GetMapping
     public PostsResponseDto getPosts() {
-        return postService.getPosts();
+        try {
+            return postService.getPosts();
+        } catch (IOException e) {
+            e.printStackTrace();    //TODO: 예외처리
+        }
+        return null;
     }
 
     @GetMapping("/{postId}")

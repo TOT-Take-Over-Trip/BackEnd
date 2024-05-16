@@ -7,6 +7,8 @@ import com.trip.post.model.mapper.PostMapper;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -28,7 +30,7 @@ public class PostServiceImpl implements PostService{
     private String fileDir;
 
     @Override
-    public PostsResponseDto getPosts() {
+    public PostsResponseDto getPosts() throws IOException {
         PostsResponseDto postsResponseDto = new PostsResponseDto();
         List<PostDto> posts = postMapper.selectAllPosts();  //전체 post 데이터
         Collections.sort(posts, new Comparator<PostDto>() {
@@ -37,6 +39,16 @@ public class PostServiceImpl implements PostService{
                 return o2.getPostLikeCount() - o1.getPostLikeCount();
             }
         }); //좋아요 순으로 정렬
+
+        //이미지 처리(DB에는 경로 저장 -> 랜더링 후 바이트 스트링으로 변환하여 리턴해주기)
+        for(PostDto post : posts){
+            if(post.getThumbnail()!=null) {
+                String filePath = post.getThumbnail();
+                byte[] bytes = Files.readAllBytes(Paths.get(filePath)); //실제 파일 불러오기
+                String base64EncodedString = Base64.getEncoder().encodeToString(bytes); //인코딩
+                post.setThumbnail(base64EncodedString); //thumbnail에 인코딩 정보 넣어주기
+            }
+        }
 
         List<PostDto> topRankPosts = new ArrayList<>(); //좋아요 많은 데이터
         int index = 0;

@@ -31,6 +31,7 @@
       post_id, member_id, title, content, thumbnail, post_like_count, created_date, updated_date, status
     FROM
       post
+    WHERE status = 'active'
   </select>
 
   <select id="selectPostById" parameterType="int" resultMap="post">

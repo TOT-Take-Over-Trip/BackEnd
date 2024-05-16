@@ -8,7 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 public interface PostService {
 
-    PostsResponseDto getPosts();
+    PostsResponseDto getPosts() throws IOException;
 
     PostDetailResponseDto getPostById(int postId);
 
