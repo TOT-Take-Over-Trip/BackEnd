@@ -83,6 +83,21 @@ public class PostServiceImpl implements PostService{
     }
 
     @Override
+    public List<PostDto> getPostsByMemberId(int memberId) {
+        return postMapper.selectPostsByMemberId(memberId);
+    }
+
+    @Override
+    public List<PostDto> getPostsByMemberComments(int memberId) {
+        return postMapper.selectPostsByMemberComments(memberId);
+    }
+
+    @Override
+    public List<PostDto> getPostsByMemberLike(int memberId) {
+        return postMapper.selectPostsByMemberLike(memberId);
+    }
+
+    @Override
     public void createPost(PostDto postDto, MultipartFile thumbnail) throws IOException {
         //파일 업로드 로직
         String fullPath = "";

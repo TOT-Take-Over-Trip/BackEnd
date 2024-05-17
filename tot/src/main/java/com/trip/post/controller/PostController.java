@@ -5,6 +5,7 @@ import com.trip.post.model.dto.PostDetailResponseDto;
 import com.trip.post.model.dto.PostsResponseDto;
 import com.trip.post.service.PostService;
 import java.io.IOException;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -31,6 +32,23 @@ public class PostController {
     public PostDetailResponseDto getPost(@PathVariable int postId) {
         return postService.getPostById(postId);
     }
+
+    @GetMapping("/members/{memberId}")
+    public List<PostDto> getPostsByMemberId(@PathVariable int memberId) {
+        return postService.getPostsByMemberId(memberId);
+    }
+
+    @GetMapping("/comments/members/{memberId}")
+    public List<PostDto> getPostsByMemberComments(@PathVariable int memberId) {
+        return postService.getPostsByMemberComments(memberId);
+    }
+
+    @GetMapping("/like/members/{memberId}")
+    public List<PostDto> selectPostsByMemberLike(@PathVariable int memberId) {
+        return postService.getPostsByMemberLike(memberId);
+    }
+
+
 
     @PostMapping(value = "/new", consumes = {"multipart/form-data"})
     public void addPost(@RequestPart("postDto") PostDto postDto,

@@ -53,7 +53,29 @@
     WHERE
       post_id = #{postId}
   </select>
-  
+
+  <select id="selectPostsByMemberId" parameterType="int" resultMap="post">
+    SELECT
+      post_id, member_id, member_name, title, content, thumbnail, post_like_count, created_date, updated_date, status
+    FROM
+      post
+    WHERE status = 'active' and member_id = #{memberId}
+  </select>
+
+  <select id="selectPostsByMemberComments" parameterType="int" resultMap="post">
+    SELECT DISTINCT p.post_id, p.member_id, p.member_name, p.title, p.content, p.thumbnail, p.post_like_count, p.created_date, p.updated_date, p.status
+    FROM post p
+           INNER JOIN post_comment pc ON p.post_id = pc.post_id
+    WHERE pc.member_id = #{memberId}
+  </select>
+
+  <select id="selectPostsByMemberLike" parameterType="int" resultMap="post">
+    SELECT DISTINCT p.post_id, p.member_id, p.member_name, p.title, p.content, p.thumbnail, p.post_like_count, p.created_date, p.updated_date, p.status
+    FROM post p
+           INNER JOIN post_like pl ON p.post_id = pl.post_id
+    WHERE pl.member_id = #{memberId}
+  </select>
+
   <insert id="insertPost" parameterType="PostDto">
     INSERT INTO Post(member_id, member_name, title, content, thumbnail)
     VALUES(#{memberId}, #{memberName}, #{title}, #{content}, #{thumbnail})
