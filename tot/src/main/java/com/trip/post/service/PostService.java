@@ -1,6 +1,7 @@
 package com.trip.post.service;
 
 import com.trip.post.model.PostDto;
+import com.trip.post.model.dto.PostCommentDto;
 import com.trip.post.model.dto.PostDetailResponseDto;
 import com.trip.post.model.dto.PostsResponseDto;
 import java.io.IOException;
@@ -18,6 +19,8 @@ public interface PostService {
     List<PostDto> getPostsByMemberComments(int memberId);
 
     List<PostDto> getPostsByMemberLike(int memberId);
+
+    void insertPostComment(PostCommentDto postCommentDto);
 
     void createPost(PostDto postDto, MultipartFile thumbnail) throws IOException;
 

@@ -1,6 +1,7 @@
 package com.trip.post.service;
 
 import com.trip.post.model.PostDto;
+import com.trip.post.model.dto.PostCommentDto;
 import com.trip.post.model.dto.PostDetailResponseDto;
 import com.trip.post.model.dto.PostsResponseDto;
 import com.trip.post.model.mapper.PostMapper;
@@ -17,6 +18,7 @@ import java.time.temporal.ChronoUnit;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.multipart.MultipartFile;
 
 @Service
@@ -95,6 +97,11 @@ public class PostServiceImpl implements PostService{
     @Override
     public List<PostDto> getPostsByMemberLike(int memberId) {
         return postMapper.selectPostsByMemberLike(memberId);
+    }
+
+    @Override
+    public void insertPostComment(PostCommentDto postCommentDto) {
+        postMapper.insertPostComment(postCommentDto);
     }
 
     @Override

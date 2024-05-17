@@ -81,6 +81,17 @@
     VALUES(#{memberId}, #{memberName}, #{title}, #{content}, #{thumbnail})
   </insert>
 
+<!--  <insert id="insertPostComment" parameterType="PostCommentDto">-->
+<!--    INSERT INTO post_comment(post_id, member_id, content, member_name)-->
+<!--    VALUES(#{postId}, #{memberId},#{content}, #{memberName})-->
+<!--  </insert>-->
+
+  <insert id="insertPostComment" parameterType="PostCommentDto">
+    INSERT into post_comment(post_id, member_id, content, member_name)
+    VALUES (#{postId}, #{memberId}, #{content}, #{memberName})
+  </insert>
+
+
   <update id="updatePost" parameterType="PostDto">
     UPDATE
       POST

@@ -21,6 +21,8 @@ public interface PostMapper {
 
     List<PostDto> selectPostsByMemberLike(int memberId);
 
+    void insertPostComment(PostCommentDto postCommentDto);
+
     void insertPost(PostDto postDto);
 
     void updatePost(int postId, PostDto postDto);

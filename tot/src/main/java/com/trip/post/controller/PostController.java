@@ -1,6 +1,7 @@
 package com.trip.post.controller;
 
 import com.trip.post.model.PostDto;
+import com.trip.post.model.dto.PostCommentDto;
 import com.trip.post.model.dto.PostDetailResponseDto;
 import com.trip.post.model.dto.PostsResponseDto;
 import com.trip.post.service.PostService;
@@ -61,6 +62,12 @@ public class PostController {
         }
     }
 
+    @PostMapping("/comments/new")
+    public void addComment(@RequestBody PostCommentDto postCommentDto){
+        System.out.println(postCommentDto.getPostId());
+        System.out.println(postCommentDto.getMemberId());
+        postService.insertPostComment(postCommentDto);
+    }
 
     @PutMapping("/{postId}")
     public void updatePost(@PathVariable int postId, @RequestBody PostDto postDto) {
