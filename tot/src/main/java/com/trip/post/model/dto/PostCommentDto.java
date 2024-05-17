@@ -9,7 +9,7 @@ public class PostCommentDto {
     private int postCommentId;
     private int postId;
     private int memberId;
-    private int memberName;
+    private String memberName;
     private String content;
     private String createdDate;
     private String updatedDate;
