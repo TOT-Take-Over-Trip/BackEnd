@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be78911b-030a-4199-bc8a-9249caaec006" name="Changes" comment="feat: 내가 쓴글, 댓글단글, 스크랩에 대해 좋아요 여부 반환하도록 수정">
+    <list default="true" id="be78911b-030a-4199-bc8a-9249caaec006" name="Changes" comment="feat: 게시글 좋아요 로직 구현, sql문 오류 정정, 주석 추가">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/post/controller/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/post/controller/PostController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/post/model/mapper/PostMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/post/model/mapper/PostMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/post/service/PostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/post/service/PostService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/post/service/PostServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/post/service/PostServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tot/src/main/resources/mapper/post.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/resources/mapper/post.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +107,7 @@
       <workItem from="1715774114170" duration="7185000" />
       <workItem from="1715817640110" duration="20701000" />
       <workItem from="1715907384215" duration="1899000" />
-      <workItem from="1715959622485" duration="8840000" />
+      <workItem from="1715959622485" duration="10470000" />
     </task>
     <task id="LOCAL-00001" summary="feat: 멤버 로그인 아이디로 조회 추가">
       <created>1714974223046</created>
@@ -183,7 +179,14 @@
       <option name="project" value="LOCAL" />
       <updated>1716008856626</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="feat: 게시글 좋아요 로직 구현, sql문 오류 정정, 주석 추가">
+      <created>1716010643468</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1716010643468</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -210,6 +213,7 @@
     <MESSAGE value="feat: 썸네일 이미지 Base64 인코딩 하여 전송" />
     <MESSAGE value="feat: 게시글에 대한 현재 사용자의 좋아요 여부 같이 반환하도록 로직 변경 - 통신시 memberId를 쿼리 파라미터로 함께 보내줘야 하며, 좋아요 여부를 체크하는 boolean 타입의 like반환" />
     <MESSAGE value="feat: 내가 쓴글, 댓글단글, 스크랩에 대해 좋아요 여부 반환하도록 수정" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: 내가 쓴글, 댓글단글, 스크랩에 대해 좋아요 여부 반환하도록 수정" />
+    <MESSAGE value="feat: 게시글 좋아요 로직 구현, sql문 오류 정정, 주석 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: 게시글 좋아요 로직 구현, sql문 오류 정정, 주석 추가" />
   </component>
 </project>

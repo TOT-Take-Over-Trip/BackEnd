@@ -53,7 +53,7 @@ public class PostController {
      * 내가 작성한 글 조회
      * @param memberId
      */
-    @GetMapping("/members}")
+    @GetMapping("/members")
     public List<PostDto> getPostsByMemberId(@RequestParam("memberId") int memberId) {
         return postService.getPostsByMemberId(memberId);
     }
@@ -71,7 +71,7 @@ public class PostController {
      * 내가 좋아요 누른 글 조회
      * @param memberId
      */
-    @GetMapping("/like/members}")
+    @GetMapping("/like/members")
     public List<PostDto> selectPostsByMemberLike(@RequestParam("memberId") int memberId) {
         return postService.getPostsByMemberLike(memberId);
     }
