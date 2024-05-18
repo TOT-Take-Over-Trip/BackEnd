@@ -6,6 +6,7 @@ import com.trip.post.model.dto.PostDetailResponseDto;
 import com.trip.post.model.dto.PostsResponseDto;
 import com.trip.post.service.PostService;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -20,9 +21,10 @@ public class PostController {
     private final PostService postService;
 
     @GetMapping
-    public PostsResponseDto getPosts() {
+    public PostsResponseDto getPosts(@RequestParam("memberId") int memberId) {
         try {
-            return postService.getPosts();
+            System.out.println(postService.getPosts(memberId).getPosts().size());
+            return postService.getPosts(memberId);
         } catch (IOException e) {
             e.printStackTrace();    //TODO: 예외처리
         }
@@ -30,8 +32,12 @@ public class PostController {
     }
 
     @GetMapping("/{postId}")
-    public PostDetailResponseDto getPost(@PathVariable int postId) {
-        return postService.getPostById(postId);
+    public PostDetailResponseDto getPost(@PathVariable int postId,
+        @RequestParam("memberId") int memberId) {
+        HashMap<String, Integer> map = new HashMap<>();
+        map.put("postId", postId);
+        map.put("memberId", memberId);
+        return postService.getPostById(map);
     }
 
     @GetMapping("/members/{memberId}")

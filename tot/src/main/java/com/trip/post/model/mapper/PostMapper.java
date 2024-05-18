@@ -2,6 +2,8 @@ package com.trip.post.model.mapper;
 
 import com.trip.post.model.PostDto;
 import com.trip.post.model.dto.PostCommentDto;
+import com.trip.post.model.dto.PostResponseDto;
+import java.util.HashMap;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -9,9 +11,9 @@ import java.util.List;
 @Mapper
 public interface PostMapper {
 
-    List<PostDto> selectAllPosts();
+    List<PostResponseDto> selectAllPosts(int memberId);
 
-    PostDto selectPostById(int postId);
+    PostResponseDto selectPostById(HashMap<String,Integer> map);
 
     List<PostCommentDto> selectPostCommentsById(int postId);
 

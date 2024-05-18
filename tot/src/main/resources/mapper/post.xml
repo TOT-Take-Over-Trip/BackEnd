@@ -16,6 +16,20 @@
     <result column="updated_date" property="updatedDate" />
     <result column="status" property="status" />
   </resultMap>
+
+  <resultMap type="postResponseDto" id="postResponse">
+    <result column="post_id" property="postId" />
+    <result column="member_id" property="memberId" />
+    <result column="member_name" property="memberName" />
+    <result column="title" property="title" />
+    <result column="content" property="content" />
+    <result column="thumbnail" property="thumbnail" />
+    <result column="post_like_count" property="postLikeCount" />
+    <result column="is_like" property="isLike" />
+    <result column="created_date" property="createdDate" />
+    <result column="updated_date" property="updatedDate" />
+    <result column="status" property="status" />
+  </resultMap>
   
   <resultMap type="PostCommentDto" id="postComment">
     <result column="post_comment_id" property="postCommentId" />
@@ -28,21 +42,25 @@
     <result column="status" property="status" />
   </resultMap>
 
-  <select id="selectAllPosts" resultMap="post">
+  <select id="selectAllPosts" parameterType="int" resultMap="postResponse">
     SELECT
-      post_id, member_id, member_name, title, content, thumbnail, post_like_count, created_date, updated_date, status
+      p.*,
+      COALESCE(pl.is_like, 0) as is_like
     FROM
-      post
-    WHERE status = 'active'
+      post p
+        LEFT JOIN (SELECT post_id, is_like FROM post_like WHERE member_id = #{memberId}) pl ON p.post_id = pl.post_id
+    where p.status= 'active';
   </select>
 
-  <select id="selectPostById" parameterType="int" resultMap="post">
+  <select id="selectPostById" parameterType="map" resultMap="postResponse">
     SELECT
-      post_id, member_id, member_name, title, content, thumbnail, post_like_count, created_date, updated_date, status
+      p.*,
+      COALESCE(pl.is_like, 0) as is_like
     FROM
-      post
+      post p
+        LEFT JOIN (SELECT post_id, is_like FROM post_like WHERE member_id = #{memberId}) pl ON p.post_id = pl.post_id
     WHERE
-      post_id = #{postId}
+      p.post_id = #{postId}
   </select>
 
   <select id="selectPostCommentsById" parameterType="int" resultMap="postComment">

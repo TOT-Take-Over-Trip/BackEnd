@@ -3,6 +3,7 @@ package com.trip.post.service;
 import com.trip.post.model.PostDto;
 import com.trip.post.model.dto.PostCommentDto;
 import com.trip.post.model.dto.PostDetailResponseDto;
+import com.trip.post.model.dto.PostResponseDto;
 import com.trip.post.model.dto.PostsResponseDto;
 import com.trip.post.model.mapper.PostMapper;
 
@@ -32,18 +33,18 @@ public class PostServiceImpl implements PostService{
     private String fileDir;
 
     @Override
-    public PostsResponseDto getPosts() throws IOException {
+    public PostsResponseDto getPosts(int memberId) throws IOException {
         PostsResponseDto postsResponseDto = new PostsResponseDto();
-        List<PostDto> posts = postMapper.selectAllPosts();  //전체 post 데이터
-        Collections.sort(posts, new Comparator<PostDto>() {
+        List<PostResponseDto> posts = postMapper.selectAllPosts(memberId);  //전체 post 데이터
+        Collections.sort(posts, new Comparator<PostResponseDto>() {
             @Override
-            public int compare(PostDto o1, PostDto o2) {
+            public int compare(PostResponseDto o1, PostResponseDto o2) {
                 return o2.getPostLikeCount() - o1.getPostLikeCount();
             }
         }); //좋아요 순으로 정렬
 
         //이미지 처리(DB에는 경로 저장 -> 랜더링 후 바이트 스트링으로 변환하여 리턴해주기)
-        for(PostDto post : posts){
+        for(PostResponseDto post : posts){
             if(post.getThumbnail()!=null) {
                 String filePath = post.getThumbnail();
                 byte[] bytes = Files.readAllBytes(Paths.get(filePath)); //실제 파일 불러오기
@@ -52,9 +53,9 @@ public class PostServiceImpl implements PostService{
             }
         }
 
-        List<PostDto> topRankPosts = new ArrayList<>(); //좋아요 많은 데이터
+        List<PostResponseDto> topRankPosts = new ArrayList<>(); //좋아요 많은 데이터
         int index = 0;
-        for(PostDto post : posts){
+        for(PostResponseDto post : posts){
             //30일 이상 지난 데이터를 사용하지 않기 위한 로직
             String date = post.getUpdatedDate().split(" ")[0];
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -77,10 +78,10 @@ public class PostServiceImpl implements PostService{
     }
 
     @Override
-    public PostDetailResponseDto getPostById(int postId) {
+    public PostDetailResponseDto getPostById(HashMap<String,Integer> map) {
         PostDetailResponseDto postDetail = new PostDetailResponseDto();
-        postDetail.setPostDto(postMapper.selectPostById(postId));
-        postDetail.setPostCommentDtos(postMapper.selectPostCommentsById(postId));
+        postDetail.setPostResponseDto(postMapper.selectPostById(map));
+        postDetail.setPostCommentDtos(postMapper.selectPostCommentsById(map.get("postId")));
         return postDetail;
     }
 

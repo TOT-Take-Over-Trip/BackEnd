@@ -5,14 +5,15 @@ import com.trip.post.model.dto.PostCommentDto;
 import com.trip.post.model.dto.PostDetailResponseDto;
 import com.trip.post.model.dto.PostsResponseDto;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import org.springframework.web.multipart.MultipartFile;
 
 public interface PostService {
 
-    PostsResponseDto getPosts() throws IOException;
+    PostsResponseDto getPosts(int memberId) throws IOException;
 
-    PostDetailResponseDto getPostById(int postId);
+    PostDetailResponseDto getPostById(HashMap<String,Integer> map);
 
     List<PostDto> getPostsByMemberId(int memberId);
 
