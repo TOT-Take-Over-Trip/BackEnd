@@ -23,6 +23,8 @@ public interface PostService {
 
     void insertPostComment(PostCommentDto postCommentDto);
 
+    void insertOrUpdateLike(HashMap<String,Integer> map);
+
     void createPost(PostDto postDto, MultipartFile thumbnail) throws IOException;
 
     void updatePost(int postId, PostDto postDto);

@@ -106,6 +106,11 @@ public class PostServiceImpl implements PostService{
     }
 
     @Override
+    public void insertOrUpdateLike(HashMap<String, Integer> map) {
+        postMapper.insertOrUpdateLike(map);
+    }
+
+    @Override
     public void createPost(PostDto postDto, MultipartFile thumbnail) throws IOException {
         //파일 업로드 로직
         String fullPath = "";

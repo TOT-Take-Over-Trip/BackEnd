@@ -4,7 +4,7 @@
 
 <mapper namespace="com.trip.post.model.mapper.PostMapper">
 
-  <resultMap type="postDto" id="post">
+ <!-- <resultMap type="postDto" id="post">
     <result column="post_id" property="postId" />
     <result column="member_id" property="memberId" />
     <result column="member_name" property="memberName" />
@@ -15,7 +15,7 @@
     <result column="created_date" property="createdDate" />
     <result column="updated_date" property="updatedDate" />
     <result column="status" property="status" />
-  </resultMap>
+  </resultMap>-->
 
   <resultMap type="postResponseDto" id="postResponse">
     <result column="post_id" property="postId" />
@@ -42,6 +42,7 @@
     <result column="status" property="status" />
   </resultMap>
 
+  <!--전체 게시글 조회-->
   <select id="selectAllPosts" parameterType="int" resultMap="postResponse">
     SELECT
       p.*,
@@ -52,6 +53,7 @@
     where p.status= 'active';
   </select>
 
+  <!--특정 게시글 조회-->
   <select id="selectPostById" parameterType="map" resultMap="postResponse">
     SELECT
       p.*,
@@ -63,6 +65,7 @@
       p.post_id = #{postId}
   </select>
 
+  <!--특정 게시글 댓글 조회-->
   <select id="selectPostCommentsById" parameterType="int" resultMap="postComment">
     SELECT
       post_comment_id, post_id, member_id, member_name, content, created_date, updated_date, status
@@ -72,9 +75,10 @@
       post_id = #{postId}
   </select>
 
+  <!--내가 작성한 게시글 조회-->
   <select id="selectPostsByMemberId" parameterType="int" resultMap="postResponse">
     SELECT
-      p.*,
+      DISTINCT p.*,
       COALESCE(pl.is_like, 0) as is_like
     FROM
       post p
@@ -82,29 +86,40 @@
     WHERE status = 'active' and member_id = #{memberId}
   </select>
 
+  <!--내가 댓글단 게시글 조회-->
   <select id="selectPostsByMemberComments" parameterType="int" resultMap="postResponse">
-    SELECT p.*, COALESCE(pl.is_like, 0) as is_like
+    SELECT DISTINCT p.*, COALESCE(pl.is_like, 0) as is_like
     FROM post p
            LEFT JOIN (SELECT post_id, is_like FROM post_like WHERE member_id = #{memberId}) pl ON p.post_id = pl.post_id
            INNER JOIN post_comment pc ON p.post_id = pc.post_id
     WHERE pc.member_id = #{memberId}
   </select>
 
+  <!--내가 좋아요 누른 게시글 조회-->
   <select id="selectPostsByMemberLike" parameterType="int" resultMap="postResponse">
     SELECT DISTINCT p.*, pl.is_like
     FROM post p
            INNER JOIN post_like pl ON p.post_id = pl.post_id
-    WHERE pl.member_id = #{memberId}
+    WHERE pl.member_id = #{memberId} and pl.is_like = true;
   </select>
 
+  <!--게시글 등록-->
   <insert id="insertPost" parameterType="PostDto">
     INSERT INTO Post(member_id, member_name, title, content, thumbnail)
     VALUES(#{memberId}, #{memberName}, #{title}, #{content}, #{thumbnail})
   </insert>
 
+  <!--게시글 댓글 등록-->
   <insert id="insertPostComment" parameterType="PostCommentDto">
     INSERT into post_comment(post_id, member_id, content, member_name)
     VALUES (#{postId}, #{memberId}, #{content}, #{memberName})
+  </insert>
+
+  <!--좋아요 누르기 -없으면 insert 있으면 상태변화-->
+  <insert id="insertOrUpdateLike" parameterType="map">
+    INSERT INTO post_like (post_id, member_id, is_like)
+    VALUES (#{postId}, #{memberId}, 1)
+    ON DUPLICATE KEY UPDATE is_like = NOT is_like;
   </insert>
 
 

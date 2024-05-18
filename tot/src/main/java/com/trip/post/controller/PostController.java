@@ -20,6 +20,10 @@ public class PostController {
 
     private final PostService postService;
 
+    /**
+     * 전체 게시글 조회
+     * @param memberId
+     */
     @GetMapping
     public PostsResponseDto getPosts(@RequestParam("memberId") int memberId) {
         try {
@@ -31,6 +35,11 @@ public class PostController {
         return null;
     }
 
+    /**
+     * 특정 게시글 조회
+     * @param postId
+     * @param memberId
+     */
     @GetMapping("/{postId}")
     public PostDetailResponseDto getPost(@PathVariable int postId,
         @RequestParam("memberId") int memberId) {
@@ -40,23 +49,38 @@ public class PostController {
         return postService.getPostById(map);
     }
 
-    @GetMapping("/members/{memberId}")
-    public List<PostDto> getPostsByMemberId(@PathVariable int memberId) {
+    /**
+     * 내가 작성한 글 조회
+     * @param memberId
+     */
+    @GetMapping("/members}")
+    public List<PostDto> getPostsByMemberId(@RequestParam("memberId") int memberId) {
         return postService.getPostsByMemberId(memberId);
     }
 
-    @GetMapping("/comments/members/{memberId}")
-    public List<PostDto> getPostsByMemberComments(@PathVariable int memberId) {
+    /**
+     * 내가 댓글단 글 조회
+     * @param memberId
+     */
+    @GetMapping("/comments/members")
+    public List<PostDto> getPostsByMemberComments(@RequestParam("memberId") int memberId) {
         return postService.getPostsByMemberComments(memberId);
     }
 
-    @GetMapping("/like/members/{memberId}")
-    public List<PostDto> selectPostsByMemberLike(@PathVariable int memberId) {
+    /**
+     * 내가 좋아요 누른 글 조회
+     * @param memberId
+     */
+    @GetMapping("/like/members}")
+    public List<PostDto> selectPostsByMemberLike(@RequestParam("memberId") int memberId) {
         return postService.getPostsByMemberLike(memberId);
     }
 
-
-
+    /**
+     * 게시글 등록
+     * @param postDto
+     * @param thumbnail
+     */
     @PostMapping(value = "/new", consumes = {"multipart/form-data"})
     public void addPost(@RequestPart("postDto") PostDto postDto,
         @RequestPart("thumbnail") MultipartFile thumbnail) {
@@ -68,11 +92,28 @@ public class PostController {
         }
     }
 
+    /**
+     * 게시글 댓글 등록
+     * @param postCommentDto
+     */
     @PostMapping("/comments/new")
     public void addComment(@RequestBody PostCommentDto postCommentDto){
         System.out.println(postCommentDto.getPostId());
         System.out.println(postCommentDto.getMemberId());
         postService.insertPostComment(postCommentDto);
+    }
+
+    /**
+     * 게시글 좋아요 누르기
+     * @param postId
+     * @param memberId
+     */
+    @PostMapping("/{postId}/like")
+    public void insertOrUpdateLike(@PathVariable("postId") int postId, @RequestParam("memberId") int memberId){
+        HashMap<String, Integer> map = new HashMap<>();
+        map.put("postId", postId);
+        map.put("memberId", memberId);
+        postService.insertOrUpdateLike(map);
     }
 
     @PutMapping("/{postId}")

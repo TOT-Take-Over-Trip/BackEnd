@@ -23,6 +23,8 @@ public interface PostMapper {
 
     List<PostDto> selectPostsByMemberLike(int memberId);
 
+    void insertOrUpdateLike(HashMap<String,Integer> map);
+
     void insertPostComment(PostCommentDto postCommentDto);
 
     void insertPost(PostDto postDto);
