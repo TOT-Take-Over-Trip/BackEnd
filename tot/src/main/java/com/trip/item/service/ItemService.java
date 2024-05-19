@@ -8,7 +8,7 @@ public interface ItemService {
 
     List<ItemDto> getItems();
     ItemDto getItemById(int itemId);
-    void createOrder(OrderDto orderDto);
+    void createOrder(int itemId, int memberId, int quantity);
     List<OrderDto> getAllOrdersByMemberId(int memberId);
     OrderDto getOrderById(int orderId);
 }

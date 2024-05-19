@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -27,26 +28,39 @@ public class ItemServiceImpl implements ItemService{
         return itemMapper.selectItemById(itemId);
     }
 
-    //TODO: 아래 과정은 하나의 트랜잭션에서 일어나야한다.
+    //아래 과정이 하나의 트랜잭션에서 일어나야한다 -> Transactional 사용
     @Override
-    public void createOrder(OrderDto orderDto) {
+    @Transactional
+    public void createOrder(int itemId, int memberId, int quantity) {
         //아이템 수량 감소
-        ItemDto item = itemMapper.selectItemById(orderDto.getItemId());
-        if(item.getQuantity()>= orderDto.getQuantity()){
+        ItemDto item = itemMapper.selectItemById(itemId);
+        if(item.getQuantity()>= quantity){
             HashMap<String, Integer> map = new HashMap<>();
-            map.put("itemId", orderDto.getItemId());
-            map.put("quantity", orderDto.getQuantity());
+            map.put("itemId", itemId);
+            map.put("quantity", quantity);
             itemMapper.updateQuantity(map);
+        }else{
+            throw new RuntimeException("아이템 수량이 부족합니다");
         }
 
         //멤버 point 감소
-        MemberDto member = memberMapper.selectMemberById(orderDto.getMemberId());
-        if(member.getPoint()>=orderDto.getPrice()) {
+        int orderPrice = item.getPrice() * quantity;
+        MemberDto member = memberMapper.selectMemberById(memberId);
+        if(member.getPoint()>=item.getPrice()) {
             HashMap<String, Integer> map = new HashMap<>();
-            map.put("memberId", orderDto.getMemberId());
-            map.put("price", orderDto.getPrice());
+            map.put("memberId", memberId);
+            map.put("price", orderPrice);
             memberMapper.updatePoint(map);
+        }else{
+            throw new RuntimeException("멤버 포인트가 부족합니다.");
         }
+
+        OrderDto orderDto = OrderDto.builder()
+            .itemId(itemId)
+            .memberId(memberId)
+            .price(orderPrice)
+            .quantity(quantity)
+            .build();
 
         //order_history에 주문 내역 저장
         itemMapper.insertOrder(orderDto);

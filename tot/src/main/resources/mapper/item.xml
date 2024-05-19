@@ -7,6 +7,7 @@
   <resultMap id="item" type="ItemDto">
     <result column="item_id" property="itemId" />
     <result column="member_id" property="name" />
+    <result column="name" property="name" />
     <result column="price" property="price" />
     <result column="quantity" property="quantity" />
     <result column="item_img" property="itemImg" />
@@ -59,16 +60,16 @@
 
   <!--특정 회원의 모든 주문 조회-->
   <select id="selectAllOrdersByMemberId" parameterType="int" resultMap="order">
-    SELECT *
+    SELECT order_id, member_id, item_id, price, quantity, created_date, updated_date, status
     FROM order_history
     WHERE status = 'active' and member_id = #{memberId}
   </select>
 
   <!--특정 주문 조회-->
   <select id="selectOrderById" parameterType="int" resultMap="order">
-    SELECT *
+    SELECT order_id, member_id, item_id, price, quantity, created_date, updated_date, status
     FROM order_history
-    WHERE status = 'active' and item_id = #{itemId}
+    WHERE status = 'active' and order_id = #{orderId}
   </select>
 
 

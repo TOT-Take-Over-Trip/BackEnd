@@ -1,5 +1,6 @@
 package com.trip.item.model.dto;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,4 +17,11 @@ public class OrderDto {
     private String updatedDate;
     private String status;
 
+    @Builder
+    public OrderDto(int itemId, int memberId, int price, int quantity){
+        this.itemId = itemId;
+        this.memberId = memberId;
+        this.price = price;
+        this.quantity = quantity;
+    }
 }

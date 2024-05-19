@@ -33,8 +33,9 @@ public class ItemController {
     }
 
     @PostMapping("/orders")
-    public void order(@RequestBody OrderDto orderDto){
-        itemService.createOrder(orderDto);
+    public void order(@RequestParam("itemId") int itemId,
+        @RequestParam("memberId") int memberId, @RequestParam("quantity") int quantity){
+        itemService.createOrder(itemId, memberId, quantity);
     }
 
     @GetMapping("/orders")
