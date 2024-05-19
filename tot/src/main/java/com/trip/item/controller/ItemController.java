@@ -3,6 +3,7 @@ package com.trip.item.controller;
 import com.trip.item.model.ItemDto;
 import com.trip.item.model.dto.OrderDto;
 import com.trip.item.service.ItemService;
+import java.io.IOException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,12 +24,12 @@ public class ItemController {
     private final ItemService itemService;
 
     @GetMapping
-    public List<ItemDto> getItems(){
+    public List<ItemDto> getItems() throws IOException {
         return itemService.getItems();
     }
 
     @GetMapping("/{itemId}")
-    public ItemDto getItem(@PathVariable(value = "itemId") int itemId){
+    public ItemDto getItem(@PathVariable(value = "itemId") int itemId) throws IOException {
         return itemService.getItemById(itemId);
     }
 

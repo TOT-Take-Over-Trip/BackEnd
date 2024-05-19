@@ -5,9 +5,14 @@ import com.trip.item.model.dto.OrderDto;
 import com.trip.item.model.mapper.ItemMapper;
 import com.trip.member.model.MemberDto;
 import com.trip.member.model.mapper.MemberMapper;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,14 +23,29 @@ public class ItemServiceImpl implements ItemService{
     private final ItemMapper itemMapper;
     private final MemberMapper memberMapper;
 
+    @Value("${file.dir}")
+    private String fileDir;
+
     @Override
-    public List<ItemDto> getItems() {
-        return itemMapper.selectAllItems();
+    public List<ItemDto> getItems() throws IOException {
+        List<ItemDto> items = itemMapper.selectAllItems();
+        for(ItemDto item : items){
+            String filePath = item.getItemImg();
+            byte[] bytes = Files.readAllBytes(Paths.get(filePath)); //실제 파일 불러오기
+            String base64EncodedString = Base64.getEncoder().encodeToString(bytes); //인코딩
+            item.setItemImg(base64EncodedString); //인코딩 정보 넣어주기
+        }
+        return items;
     }
 
     @Override
-    public ItemDto getItemById(int itemId) {
-        return itemMapper.selectItemById(itemId);
+    public ItemDto getItemById(int itemId) throws IOException {
+        ItemDto item = itemMapper.selectItemById(itemId);
+        String filePath = item.getItemImg();
+        byte[] bytes = Files.readAllBytes(Paths.get(filePath)); //실제 파일 불러오기
+        String base64EncodedString = Base64.getEncoder().encodeToString(bytes); //인코딩
+        item.setItemImg(base64EncodedString); //인코딩 정보 넣어주기
+        return item;
     }
 
     //아래 과정이 하나의 트랜잭션에서 일어나야한다 -> Transactional 사용

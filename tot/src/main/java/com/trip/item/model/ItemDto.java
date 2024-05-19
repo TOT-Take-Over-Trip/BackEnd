@@ -1,8 +1,10 @@
 package com.trip.item.model;
 
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
+@Setter
 public class ItemDto {
 
     private int itemId;
