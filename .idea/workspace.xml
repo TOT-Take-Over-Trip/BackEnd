@@ -10,7 +10,6 @@
       <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/post/model/mapper/PostMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/post/model/mapper/PostMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/post/service/PostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/post/service/PostService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/post/service/PostServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/post/service/PostServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tot/src/main/resources/mapper/post.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/resources/mapper/post.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,7 +120,7 @@
       <workItem from="1715817640110" duration="20701000" />
       <workItem from="1715907384215" duration="1899000" />
       <workItem from="1715959622485" duration="27001000" />
-      <workItem from="1716116111155" duration="4757000" />
+      <workItem from="1716116111155" duration="8038000" />
     </task>
     <task id="LOCAL-00001" summary="feat: 멤버 로그인 아이디로 조회 추가">
       <created>1714974223046</created>

@@ -3,6 +3,7 @@ package com.trip.post.service;
 import com.trip.post.model.PostDto;
 import com.trip.post.model.dto.PostCommentDto;
 import com.trip.post.model.dto.PostDetailResponseDto;
+import com.trip.post.model.dto.PostResponseDto;
 import com.trip.post.model.dto.PostsResponseDto;
 import java.io.IOException;
 import java.util.HashMap;
@@ -15,11 +16,11 @@ public interface PostService {
 
     PostDetailResponseDto getPostById(HashMap<String,Integer> map);
 
-    List<PostDto> getPostsByMemberId(int memberId);
+    List<PostResponseDto> getPostsByMemberId(int memberId) throws IOException;
 
-    List<PostDto> getPostsByMemberComments(int memberId);
+    List<PostResponseDto> getPostsByMemberComments(int memberId) throws IOException;
 
-    List<PostDto> getPostsByMemberLike(int memberId);
+    List<PostResponseDto> getPostsByMemberLike(int memberId) throws IOException;
 
     PostCommentDto insertPostComment(PostCommentDto postCommentDto);
 

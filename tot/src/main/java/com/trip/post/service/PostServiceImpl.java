@@ -45,12 +45,7 @@ public class PostServiceImpl implements PostService{
 
         //이미지 처리(DB에는 경로 저장 -> 랜더링 후 바이트 스트링으로 변환하여 리턴해주기)
         for(PostResponseDto post : posts){
-            if(post.getThumbnail()!=null) {
-                String filePath = post.getThumbnail();
-                byte[] bytes = Files.readAllBytes(Paths.get(filePath)); //실제 파일 불러오기
-                String base64EncodedString = Base64.getEncoder().encodeToString(bytes); //인코딩
-                post.setThumbnail(base64EncodedString); //thumbnail에 인코딩 정보 넣어주기
-            }
+            encodingImage(post);
         }
 
         List<PostResponseDto> topRankPosts = new ArrayList<>(); //좋아요 많은 데이터
@@ -86,18 +81,30 @@ public class PostServiceImpl implements PostService{
     }
 
     @Override
-    public List<PostDto> getPostsByMemberId(int memberId) {
-        return postMapper.selectPostsByMemberId(memberId);
+    public List<PostResponseDto> getPostsByMemberId(int memberId) throws IOException {
+        List<PostResponseDto> posts = postMapper.selectPostsByMemberId(memberId);
+        for(PostResponseDto post : posts){
+            encodingImage(post);
+        }
+        return posts;
     }
 
     @Override
-    public List<PostDto> getPostsByMemberComments(int memberId) {
-        return postMapper.selectPostsByMemberComments(memberId);
+    public List<PostResponseDto> getPostsByMemberComments(int memberId) throws IOException {
+        List<PostResponseDto> posts = postMapper.selectPostsByMemberComments(memberId);
+        for(PostResponseDto post : posts){
+            encodingImage(post);
+        }
+        return posts;
     }
 
     @Override
-    public List<PostDto> getPostsByMemberLike(int memberId) {
-        return postMapper.selectPostsByMemberLike(memberId);
+    public List<PostResponseDto> getPostsByMemberLike(int memberId) throws IOException {
+        List<PostResponseDto> posts = postMapper.selectPostsByMemberLike(memberId);
+        for(PostResponseDto post : posts){
+            encodingImage(post);
+        }
+        return posts;
     }
 
     @Override
@@ -137,5 +144,15 @@ public class PostServiceImpl implements PostService{
     @Override
     public void deletePost(int postId) {
         postMapper.deletePostById(postId);
+    }
+
+
+    private void encodingImage(PostResponseDto post) throws IOException {
+        if(post.getThumbnail()!=null) {
+            String filePath = post.getThumbnail();
+            byte[] bytes = Files.readAllBytes(Paths.get(filePath)); //실제 파일 불러오기
+            String base64EncodedString = Base64.getEncoder().encodeToString(bytes); //인코딩
+            post.setThumbnail(base64EncodedString); //thumbnail에 인코딩 정보 넣어주기
+        }
     }
 }

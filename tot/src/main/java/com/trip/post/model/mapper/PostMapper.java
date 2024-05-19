@@ -17,11 +17,11 @@ public interface PostMapper {
 
     List<PostCommentDto> selectPostCommentsById(int postId);
 
-    List<PostDto> selectPostsByMemberId(int memberId);
+    List<PostResponseDto> selectPostsByMemberId(int memberId);
 
-    List<PostDto> selectPostsByMemberComments(int memberId);
+    List<PostResponseDto> selectPostsByMemberComments(int memberId);
 
-    List<PostDto> selectPostsByMemberLike(int memberId);
+    List<PostResponseDto> selectPostsByMemberLike(int memberId);
 
     void insertOrUpdateLike(HashMap<String,Integer> map);
 

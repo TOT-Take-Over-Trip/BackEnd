@@ -3,6 +3,7 @@ package com.trip.post.controller;
 import com.trip.post.model.PostDto;
 import com.trip.post.model.dto.PostCommentDto;
 import com.trip.post.model.dto.PostDetailResponseDto;
+import com.trip.post.model.dto.PostResponseDto;
 import com.trip.post.model.dto.PostsResponseDto;
 import com.trip.post.service.PostService;
 import java.io.IOException;
@@ -27,7 +28,6 @@ public class PostController {
     @GetMapping
     public PostsResponseDto getPosts(@RequestParam("memberId") int memberId) {
         try {
-            System.out.println(postService.getPosts(memberId).getPosts().size());
             return postService.getPosts(memberId);
         } catch (IOException e) {
             e.printStackTrace();    //TODO: 예외처리
@@ -54,16 +54,18 @@ public class PostController {
      * @param memberId
      */
     @GetMapping("/members")
-    public List<PostDto> getPostsByMemberId(@RequestParam("memberId") int memberId) {
+    public List<PostResponseDto> getPostsByMemberId(@RequestParam("memberId") int memberId)
+        throws IOException {
         return postService.getPostsByMemberId(memberId);
     }
 
     /**
-     * 내가 댓글단 글 조회
+     * 내가 댓글 단 글 조회
      * @param memberId
      */
     @GetMapping("/comments/members")
-    public List<PostDto> getPostsByMemberComments(@RequestParam("memberId") int memberId) {
+    public List<PostResponseDto> getPostsByMemberComments(@RequestParam("memberId") int memberId)
+        throws IOException {
         return postService.getPostsByMemberComments(memberId);
     }
 
@@ -72,7 +74,8 @@ public class PostController {
      * @param memberId
      */
     @GetMapping("/like/members")
-    public List<PostDto> selectPostsByMemberLike(@RequestParam("memberId") int memberId) {
+    public List<PostResponseDto> selectPostsByMemberLike(@RequestParam("memberId") int memberId)
+        throws IOException {
         return postService.getPostsByMemberLike(memberId);
     }
 
