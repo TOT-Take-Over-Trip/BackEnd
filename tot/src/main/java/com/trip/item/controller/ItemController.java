@@ -5,6 +5,7 @@ import com.trip.item.model.dto.OrderDto;
 import com.trip.item.service.ItemService;
 import java.io.IOException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,6 +20,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/items")
+@CrossOrigin("*")
 public class ItemController {
 
     private final ItemService itemService;
