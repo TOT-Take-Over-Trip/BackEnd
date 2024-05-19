@@ -21,7 +21,7 @@ public interface PostService {
 
     List<PostDto> getPostsByMemberLike(int memberId);
 
-    void insertPostComment(PostCommentDto postCommentDto);
+    PostCommentDto insertPostComment(PostCommentDto postCommentDto);
 
     void insertOrUpdateLike(HashMap<String,Integer> map);
 

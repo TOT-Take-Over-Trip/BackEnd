@@ -101,8 +101,10 @@ public class PostServiceImpl implements PostService{
     }
 
     @Override
-    public void insertPostComment(PostCommentDto postCommentDto) {
-        postMapper.insertPostComment(postCommentDto);
+    public PostCommentDto insertPostComment(PostCommentDto postCommentDto) {
+        postMapper.insertPostComment(postCommentDto); //댓글 생성(주의: 리턴 값은 생성된 id가 아닌 영향 끼친 컬럼 개수라 1 리턴)
+        int postCommentId = postCommentDto.getPostCommentId(); //생성된 댓글의 id 값
+        return postMapper.selectPostCommentByPostCommentId(postCommentId); //생성된 댓글 정보 리턴해줌
     }
 
     @Override

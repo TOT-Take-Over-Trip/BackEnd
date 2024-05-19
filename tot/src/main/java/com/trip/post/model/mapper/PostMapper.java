@@ -27,6 +27,8 @@ public interface PostMapper {
 
     void insertPostComment(PostCommentDto postCommentDto);
 
+    PostCommentDto selectPostCommentByPostCommentId(int postCommentId);
+
     void insertPost(PostDto postDto);
 
     void updatePost(int postId, PostDto postDto);

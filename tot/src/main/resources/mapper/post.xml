@@ -110,10 +110,20 @@
   </insert>
 
   <!--게시글 댓글 등록-->
-  <insert id="insertPostComment" parameterType="PostCommentDto">
+  <insert id="insertPostComment" parameterType="PostCommentDto" useGeneratedKeys="true" keyProperty="postCommentId">
     INSERT into post_comment(post_id, member_id, content, member_name)
     VALUES (#{postId}, #{memberId}, #{content}, #{memberName})
+    <selectKey keyProperty="postCommentId" resultType="int" order="AFTER">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
   </insert>
+
+  <!--게시글 댓글 단일 조회(댓글 실시간 반영을 위해 사용)-->
+  <select id="selectPostCommentByPostCommentId" parameterType="int" resultMap="postComment">
+    SELECT *
+    FROM post_comment
+    WHERE post_comment_id = #{postCommentId}
+  </select>
 
   <!--좋아요 누르기 -없으면 insert 있으면 상태변화-->
   <insert id="insertOrUpdateLike" parameterType="map">

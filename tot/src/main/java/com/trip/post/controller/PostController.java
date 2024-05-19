@@ -97,10 +97,8 @@ public class PostController {
      * @param postCommentDto
      */
     @PostMapping("/comments/new")
-    public void addComment(@RequestBody PostCommentDto postCommentDto){
-        System.out.println(postCommentDto.getPostId());
-        System.out.println(postCommentDto.getMemberId());
-        postService.insertPostComment(postCommentDto);
+    public PostCommentDto addComment(@RequestBody PostCommentDto postCommentDto){
+        return postService.insertPostComment(postCommentDto);
     }
 
     /**
