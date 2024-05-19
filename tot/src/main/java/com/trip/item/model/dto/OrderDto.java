@@ -1,13 +1,15 @@
-package com.trip.item.model;
+package com.trip.item.model.dto;
 
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
-public class ItemDto {
+@Setter
+public class OrderDto {
 
+    private int orderId;
     private int itemId;
-    private String name;
-    private String itemImg;
+    private int memberId;
     private int price;
     private int quantity;
     private String createdDate;

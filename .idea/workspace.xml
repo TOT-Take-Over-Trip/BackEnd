@@ -6,7 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="be78911b-030a-4199-bc8a-9249caaec006" name="Changes" comment="feat: 게시글 좋아요 로직 구현, sql문 오류 정정, 주석 추가">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/post/controller/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/post/controller/PostController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/item/controller/ItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/item/controller/ItemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/item/model/ItemDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/item/model/ItemDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/item/model/mapper/ItemMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/item/model/mapper/ItemMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/member/model/mapper/MemberMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/member/model/mapper/MemberMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tot/src/main/resources/mapper/member.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/resources/mapper/member.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,6 +22,7 @@
       <list>
         <option value="Interface" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -45,6 +50,8 @@
     <property name="RequestMappingsPanelWidth0" value="75" />
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
@@ -59,8 +66,14 @@
       <recent name="$PROJECT_DIR$/tot/src/main/resources" />
       <recent name="C:\SSAFY\projects\enjoytrip_framework_s10-team05\tot\src\main\resources" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.trip" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.trip.item.service" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.trip.post.service" />
@@ -107,7 +120,7 @@
       <workItem from="1715774114170" duration="7185000" />
       <workItem from="1715817640110" duration="20701000" />
       <workItem from="1715907384215" duration="1899000" />
-      <workItem from="1715959622485" duration="10470000" />
+      <workItem from="1715959622485" duration="22950000" />
     </task>
     <task id="LOCAL-00001" summary="feat: 멤버 로그인 아이디로 조회 추가">
       <created>1714974223046</created>

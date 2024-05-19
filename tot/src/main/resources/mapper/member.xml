@@ -71,6 +71,15 @@
 			member_id = #{memberId}
 	</update>
 
+	<update id="updatePoint" parameterType="map">
+		UPDATE
+			MEMBER
+		SET
+			point = point - #{price}
+		WHERE
+			member_id = #{memberId}
+	</update>
+
 	<update id="deleteMemberById" parameterType="int">
 		UPDATE
 		    MEMBER
