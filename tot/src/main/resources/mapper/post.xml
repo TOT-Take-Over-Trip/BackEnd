@@ -45,7 +45,7 @@
   <!--전체 게시글 조회-->
   <select id="selectAllPosts" parameterType="int" resultMap="postResponse">
     SELECT
-      p.*,
+      DISTINCT p.*,
       COALESCE(pl.is_like, 0) as is_like
     FROM
       post p
@@ -56,7 +56,7 @@
   <!--특정 게시글 조회-->
   <select id="selectPostById" parameterType="map" resultMap="postResponse">
     SELECT
-      p.*,
+      DISTINCT p.*,
       COALESCE(pl.is_like, 0) as is_like
     FROM
       post p

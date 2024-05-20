@@ -30,7 +30,7 @@
     <!--  전체 코스 조회  -->
     <select id="selectAllCourses" parameterType="int" resultMap="courseResponseDto">
         SELECT
-            c.*,
+            DISTINCT c.*,
             COALESCE(cl.is_like, 0) as is_like
         FROM
             course c
@@ -42,7 +42,7 @@
     <!--  특정 코스 조회 -->
     <select id="selectCourseById" parameterType="map" resultMap="courseResponseDto">
         SELECT
-            c.*,
+            DISTINCT c.*,
             COALESCE(cl.is_like, 0) as is_like
         FROM
             course c
