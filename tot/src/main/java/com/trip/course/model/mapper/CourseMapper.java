@@ -33,7 +33,7 @@ public interface CourseMapper {
     void modifyCourse(CourseDto course);
 
     // 코스 인수
-    void takeOverCourse(CourseDto course);
+    void takeOverCourse(HashMap<String, Object> map);
 
     // 코스 삭제 => 실제로 삭제하는게 아니라 상태값만 변경
     void deleteCourse(CourseDto course);

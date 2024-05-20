@@ -92,7 +92,7 @@
             course_id = #{courseId}
     </update>
 
-    <update id="takeOverCourse" parameterType="CourseDto">
+    <update id="takeOverCourse" parameterType="map">
         UPDATE
             course
         SET

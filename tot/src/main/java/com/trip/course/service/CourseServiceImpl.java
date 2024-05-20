@@ -5,6 +5,8 @@ import com.trip.course.model.CourseDto;
 import com.trip.course.model.dto.CoursePlaceDto;
 import com.trip.course.model.dto.CourseResponseDto;
 import com.trip.course.model.mapper.CourseMapper;
+import com.trip.member.model.MemberDto;
+import com.trip.member.model.mapper.MemberMapper;
 import java.util.HashMap;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,6 +18,7 @@ import java.util.List;
 public class CourseServiceImpl implements CourseService {
 
     private final CourseMapper courseMapper;
+    private final MemberMapper memberMapper;
 
     //모든 코스 조회
     @Override
@@ -30,7 +33,10 @@ public class CourseServiceImpl implements CourseService {
 
     //단일 코스 조회
     @Override
-    public CourseResponseDto getCourseById(HashMap<String, Object> map) {
+    public CourseResponseDto getCourseById(int courseId, int memberId) {
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("courseId", courseId);
+        map.put("memberId", memberId);
         CourseResponseDto course = courseMapper.selectCourseById(map);
         List<CoursePlaceDto> coursePlaces = getCoursePlaces(course.getCourseId());
         course.setCoursePlaces(coursePlaces);
@@ -77,8 +83,14 @@ public class CourseServiceImpl implements CourseService {
 
     //코스 인수
     @Override
-    public void takeOverCourse(CourseDto course) {
-        courseMapper.takeOverCourse(course);
+    public void takeOverCourse(int courseId, int memberId) {
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("courseId", courseId);
+        map.put("memberId", memberId);
+        CourseResponseDto course = getCourseById(courseId, memberId);
+        MemberDto member = memberMapper.selectMemberById(memberId);
+        //TODO: 코스 살 수 있는지 점검필요 -> course 가격과 member 포인트 비교)
+        courseMapper.takeOverCourse(map);
     }
 
     //코스 삭제

@@ -30,10 +30,7 @@ public class CourseController {
 
     @GetMapping("/{courseId}")
     public CourseResponseDto getCourseById(@PathVariable int courseId, @RequestParam("memberId") int memberId) {
-        HashMap<String, Object> map = new HashMap<>();
-        map.put("courseId", courseId);
-        map.put("memberId", memberId);
-        return courseService.getCourseById(map);
+        return courseService.getCourseById(courseId, memberId);
     }
 
     // TODO: 구현해야 함
@@ -42,11 +39,10 @@ public class CourseController {
         courseService.modifyCourse(course);
     }
 
-    // TODO: 구현해야 함
-    // 이거 memberId도 필요한듯
+    // 코스 인수
     @PostMapping("/takeover/{courseId}")
-    public void takeover(@PathVariable(value = "courseId") Long courseId) {
-//        courseService.takeOverCourse();
+    public void takeover(@PathVariable int courseId, @RequestParam("memberId") int memberId) {
+        courseService.takeOverCourse(courseId, memberId);
     }
 
     // TODO: 구현해야 함
