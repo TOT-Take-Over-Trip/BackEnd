@@ -33,6 +33,16 @@ public class CourseController {
         return courseService.getCourseById(courseId, memberId);
     }
 
+    @PostMapping("/like/{courseId}")
+    public void addLike(@PathVariable("courseId") int courseId, @RequestParam("memberId") int memberId){
+        courseService.addLike(courseId,memberId);
+    }
+
+    @PostMapping("/unlike/{courseId}")
+    public void cancelLike(@PathVariable("courseId") int courseId, @RequestParam("memberId") int memberId){
+        courseService.cancelLike(courseId,memberId);
+    }
+
     // TODO: 구현해야 함
     @PutMapping("/{courseId}")
     public void updateCourse(@PathVariable(value = "courseId") Long courseId, @RequestBody CourseDto course) {

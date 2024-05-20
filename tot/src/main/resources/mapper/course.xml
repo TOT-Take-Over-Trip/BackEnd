@@ -84,6 +84,20 @@
         WHERE course_id = #{courseId}
     </update>
 
+    <!--좋아요 활성화-->
+    <insert id="addLike" parameterType="map">
+        INSERT INTO course_like (course_id, member_id, is_like)
+        VALUES (#{courseId}, #{memberId}, 1)
+        ON DUPLICATE KEY UPDATE is_like = 1
+    </insert>
+
+    <!--좋아요 취소-->
+    <update id="cancelLike" parameterType="map">
+        UPDATE course_like
+        SET is_like = 0
+        WHERE member_id = #{memberId} and course_id = #{courseId}
+    </update>
+
     <update id="modifyCourse" parameterType="CourseDto">
         UPDATE
             course

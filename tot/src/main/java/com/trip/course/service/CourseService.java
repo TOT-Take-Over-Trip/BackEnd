@@ -21,6 +21,12 @@ public interface CourseService {
     //코스에 속해있는 장소 단일 조회
     CoursePlaceDto getCoursePlaceById(int coursePlaceId);
 
+    //좋아요 활성화
+    void addLike(int courseId, int memberId);
+
+    //좋아요 취소
+    void cancelLike(int courseId, int memberId);
+
     //코스에 장소 추가
     void insertCoursePlace(int courseId, CoursePlaceDto coursePlace);
 

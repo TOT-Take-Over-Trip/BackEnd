@@ -58,6 +58,22 @@ public class CourseServiceImpl implements CourseService {
         return courseMapper.selectCoursePlaceById(coursePlaceId);
     }
 
+    @Override
+    public void addLike(int courseId, int memberId) {
+        HashMap<String, Object> map =new HashMap<>();
+        map.put("courseId", courseId);
+        map.put("memberId", memberId);
+        courseMapper.addLike(map);
+    }
+
+    @Override
+    public void cancelLike(int courseId, int memberId) {
+        HashMap<String, Object> map =new HashMap<>();
+        map.put("courseId", courseId);
+        map.put("memberId", memberId);
+        courseMapper.cancelLike(map);
+    }
+
     //코스 세부정보 넣기
     @Override
     public void insertCoursePlace(int courseId, CoursePlaceDto coursePlace) {
