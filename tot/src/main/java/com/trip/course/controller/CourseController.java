@@ -13,6 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/courses")
 @RequiredArgsConstructor
+@CrossOrigin("*")
 public class CourseController {
 
     private final CourseService courseService;
@@ -22,7 +23,6 @@ public class CourseController {
         return courseService.getAllCourses(memberId);
     }
 
-    // TODO: 구현해야 함
     @PostMapping
     public void addCourse(@RequestBody CourseDto course) {
         courseService.insertCourse(course);
