@@ -31,6 +31,18 @@
     where name = #{name}
   </select>
 
+  <select id="selectAll" resultMap="place">
+    select *
+    from place
+    where status = 'active'
+  </select>
+
+  <select id="selectById" parameterType="int" resultMap="place">
+    select *
+    from place
+    where place_id = #{placeId}
+  </select>
+
 
 
 </mapper>

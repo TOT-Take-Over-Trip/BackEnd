@@ -5,6 +5,7 @@ import com.trip.place.model.mapper.PlaceMapper;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -72,5 +73,20 @@ public class PlaceServiceImpl implements PlaceService{
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public List<PlaceDto> getPlaces() {
+        return placeMapper.selectAll();
+    }
+
+    @Override
+    public PlaceDto getPlaceById(int placeId) {
+        return placeMapper.selectById(placeId);
+    }
+
+    @Override
+    public void insertPlace(PlaceDto placeDto) {
+        placeMapper.insertPlace(placeDto);
     }
 }

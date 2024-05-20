@@ -23,18 +23,16 @@ public class PlaceController {
 
     @GetMapping
     public List<PlaceDto> getPlaces() {
-        List<PlaceDto> places = new ArrayList<PlaceDto>();
-        return places;
+        return placeService.getPlaces();
     }
 
-    @GetMapping("/{id}")
-    public PlaceDto getPlace(@PathVariable(value = "id") Long placeId) {
-        PlaceDto place = new PlaceDto();
-        return place;
+    @GetMapping("/{placeId}")
+    public PlaceDto getPlace(@PathVariable int placeId) {
+        return placeService.getPlaceById(placeId);
     }
 
     @PostMapping
     public void addPlace(@RequestBody PlaceDto place) {
-
+        placeService.insertPlace(place);
     }
 }

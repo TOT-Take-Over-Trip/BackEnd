@@ -7,8 +7,10 @@
     <list default="true" id="be78911b-030a-4199-bc8a-9249caaec006" name="Changes" comment="fix: 아이템, 주문 관련 버그 수정, 주문 생성시 트랜잭션 처리 및 예외처리 구현">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/place/controller/PlaceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/place/controller/PlaceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/place/model/PlaceDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/place/model/PlaceDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/place/model/mapper/PlaceMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/place/model/mapper/PlaceMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/place/service/PlaceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/place/service/PlaceService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/place/service/PlaceServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/place/service/PlaceServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tot/src/main/resources/mapper/place.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/resources/mapper/place.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +141,8 @@
       <workItem from="1715959622485" duration="27001000" />
       <workItem from="1716116111155" duration="10032000" />
       <workItem from="1716134034173" duration="49000" />
-      <workItem from="1716163528514" duration="8670000" />
+      <workItem from="1716163528514" duration="10378000" />
+      <workItem from="1716176330203" duration="1556000" />
     </task>
     <task id="LOCAL-00001" summary="feat: 멤버 로그인 아이디로 조회 추가">
       <created>1714974223046</created>
