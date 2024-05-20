@@ -1,34 +1,37 @@
 package com.trip.course.model;
 
 
+import com.trip.course.model.dto.CoursePlaceDto;
+import java.util.List;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
+@Setter
+@NoArgsConstructor
 public class CourseDto {
 
-    private Long courseId;
-    private Long memberId;
+    private int courseId;
+    private int memberId;
     private String title;
     private String content;
-    private Long hit;
+    private int hit;
+    private int courseLikeCount;
+    List<CoursePlaceDto> coursePlaces;
     private String createdDate;
     private String updatedDate;
     private String status;
 
-
-    public CourseDto() {
-    }
-
     @Builder
-    public CourseDto(Long courseId, Long memberId, String title, String content, Long hit, String createdDate, String updatedDate, String status) {
-        this.courseId = courseId;
+    public CourseDto(int memberId, String title, String content, int hit, int courseLikeCount,
+        List<CoursePlaceDto> coursePlaces) {
         this.memberId = memberId;
         this.title = title;
         this.content = content;
         this.hit = hit;
-        this.createdDate = createdDate;
-        this.updatedDate = updatedDate;
-        this.status = status;
+        this.courseLikeCount = courseLikeCount;
+        this.coursePlaces = coursePlaces;
     }
 }

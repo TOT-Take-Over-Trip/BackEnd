@@ -1,6 +1,9 @@
 package com.trip.course.model.mapper;
 
 import com.trip.course.model.CourseDto;
+import com.trip.course.model.dto.CoursePlaceDto;
+import com.trip.course.model.dto.CourseResponseDto;
+import java.util.HashMap;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -9,10 +12,19 @@ import java.util.List;
 public interface CourseMapper {
 
     // 전체 코스 조회
-    List<CourseDto> selectAllCourses();
+    List<CourseResponseDto> selectAllCourses(int memberId);
 
     // 특정 코스 조회
-    CourseDto selectCourseById(Long id);
+    CourseResponseDto selectCourseById(HashMap<String, Object> map);
+
+    //코스에 속해있는 장소 전부 조회
+    List<CoursePlaceDto> selectCoursePlaces(int courseId);
+
+    //코스에 속해있는 장소 단일 조회
+    CoursePlaceDto selectCoursePlaceById(int coursePlaceId);
+
+    //코스에 장소 추가
+    void insertCoursePlace(HashMap<String, Object> map);
 
     // 코스 추가
     void insertCourse(CourseDto course);

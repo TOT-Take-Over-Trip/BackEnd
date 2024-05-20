@@ -2,15 +2,27 @@ package com.trip.course.service;
 
 import com.trip.course.model.CourseDto;
 
+import com.trip.course.model.dto.CoursePlaceDto;
+import com.trip.course.model.dto.CourseResponseDto;
+import java.util.HashMap;
 import java.util.List;
 
 public interface CourseService {
 
     // 전체 코스 조회
-    List<CourseDto> selectAllCourses();
+    List<CourseResponseDto> getAllCourses(int memberId);
 
     // 특정 코스 조회
-    CourseDto selectCourseById(Long id);
+    CourseResponseDto getCourseById(HashMap<String, Object> map);
+
+    //코스에 속해있는 장소 전부 조회
+    List<CoursePlaceDto> getCoursePlaces(int courseId);
+
+    //코스에 속해있는 장소 단일 조회
+    CoursePlaceDto getCoursePlaceById(int coursePlaceId);
+
+    //코스에 장소 추가
+    void insertCoursePlace(int courseId, CoursePlaceDto coursePlace);
 
     // 코스 추가
     void insertCourse(CourseDto course);

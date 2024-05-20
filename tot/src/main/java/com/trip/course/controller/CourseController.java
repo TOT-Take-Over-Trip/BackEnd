@@ -1,7 +1,9 @@
 package com.trip.course.controller;
 
 import com.trip.course.model.CourseDto;
+import com.trip.course.model.dto.CourseResponseDto;
 import com.trip.course.service.CourseService;
+import java.util.HashMap;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,10 +17,9 @@ public class CourseController {
 
     private final CourseService courseService;
 
-    // TODO: 구현해야 함
     @GetMapping
-    public List<CourseDto> getCourses() {
-        return courseService.selectAllCourses();
+    public List<CourseResponseDto> getCourses(@RequestParam("memberId") int memberId) {
+        return courseService.getAllCourses(memberId);
     }
 
     // TODO: 구현해야 함
@@ -27,12 +28,13 @@ public class CourseController {
         courseService.insertCourse(course);
     }
 
-    // TODO: 구현해야 함
     @GetMapping("/{courseId}")
-    public CourseDto getCourse(@PathVariable(value = "courseId") Long courseId) {
-        return courseService.selectCourseById(courseId);
+    public CourseResponseDto getCourseById(@PathVariable int courseId, @RequestParam("memberId") int memberId) {
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("courseId", courseId);
+        map.put("memberId", memberId);
+        return courseService.getCourseById(map);
     }
-
 
     // TODO: 구현해야 함
     @PutMapping("/{courseId}")

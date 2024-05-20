@@ -4,41 +4,77 @@
 
 <mapper namespace="com.trip.course.model.mapper.CourseMapper">
 
-    <resultMap id="course" type="courseDto">
+    <resultMap id="courseResponseDto" type="courseResponseDto">
         <result column="course_id" property="courseId" />
         <result column="member_id" property="memberId" />
         <result column="title" property="title" />
         <result column="content" property="content" />
         <result column="hit" property="hit" />
+        <result column="course_like_count" property="courseLikeCount" />
+        <result column="is_like" property="isLike" />
+        <result column="created_date" property="createdDate" />
+        <result column="updated_date" property="updatedDate" />
+        <result column="status" property="status" />
+    </resultMap>
+
+    <resultMap id="coursePlace" type="CoursePlaceDto">
+        <result column="course_place_id" property="coursePlaceId" />
+        <result column="course_id" property="courseId" />
+        <result column="place_id" property="placeId" />
+        <result column="content" property="content" />
         <result column="created_date" property="createdDate" />
         <result column="updated_date" property="updatedDate" />
         <result column="status" property="status" />
     </resultMap>
 
     <!--  전체 코스 조회  -->
-    <!-- TODO: 이거 status active인 애들만 받아옴   -->
-    <select id="selectAllCourses" resultMap="course">
+    <select id="selectAllCourses" parameterType="int" resultMap="courseResponseDto">
         SELECT
-            course_id, member_id, title, content, hit, created_date, updated_date, status
+            c.*,
+            COALESCE(cl.is_like, 0) as is_like
         FROM
-            course
+            course c
+                LEFT JOIN (SELECT course_id, is_like FROM course_like WHERE member_id = #{memberId}) cl ON c.course_id = cl.course_id
         WHERE
-            status = "active"
+            status = 'active'
     </select>
 
     <!--  특정 코스 조회 -->
-    <select id="selectCourseById" parameterType="Long" resultMap="course">
+    <select id="selectCourseById" parameterType="map" resultMap="courseResponseDto">
         SELECT
-            course_id, member_id, title, content, hit, created_date, updated_date, status
+            c.*,
+            COALESCE(cl.is_like, 0) as is_like
         FROM
-            course
+            course c
+                LEFT JOIN (SELECT course_id, is_like FROM course_like WHERE member_id = #{memberId}) cl ON c.course_id = cl.course_id
         WHERE
-            course_id = #{id}
+            status = 'active' and c.course_id = #{courseId}
     </select>
 
-    <insert id="insertCourse" parameterType="CourseDto">
-        INSERT INTO course(course_id, member_id, title, content, hit, created_date, updated_date, status)
-        VALUES (#{courseId}, #{memberId}, #{title}, #{content}, #{hit}, #{createdDate}, #{updatedDate}, #{status})
+    <!--코스 장소 등록-->
+    <insert id="insertCoursePlace" parameterType="map">
+        INSERT INTO course_place(course_id, place_id, content)
+        VALUES (#{courseId}, #{placeId}, #{content})
+    </insert>
+
+    <!--코스에 속해있는 장소 전부 조회-->
+    <select id="selectCoursePlaces" parameterType="int" resultMap="coursePlace">
+        SELECT course_place_id, course_id, place_id, content, created_date, updated_date, status
+        FROM course_place
+        WHERE course_id = #{courseId}
+    </select>
+
+    <!--코스에 속해있는 장소 단일 조회-->
+    <select id="selectCoursePlaceById" parameterType="int" resultMap="coursePlace">
+        SELECT course_place_id, course_id, place_id, content, created_date, updated_date, status
+        FROM course_place
+        WHERE course_place_id = #{coursePlaceId}
+    </select>
+
+    <!--코스 등록-->
+    <insert id="insertCourse" parameterType="CourseDto" useGeneratedKeys="true" keyProperty="courseId">
+        INSERT INTO course(member_id, title, content)
+        VALUES (#{memberId}, #{title}, #{content})
     </insert>
 
     <update id="modifyCourse" parameterType="CourseDto">
@@ -70,7 +106,7 @@
         UPDATE
             course
         SET
-            status = "inactive"
+            status = 'inactive'
         WHERE
             course_id = #{courseId}
     </update>
