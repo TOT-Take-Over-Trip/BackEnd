@@ -14,7 +14,7 @@ public class CourseResponseDto {
     private int hit;
     private int courseLikeCount;
     private boolean isLike;
-    List<CoursePlaceDto> courseDetails;
+    List<CoursePlaceDto> coursePlaces;
     private String createdDate;
     private String updatedDate;
     private String status;

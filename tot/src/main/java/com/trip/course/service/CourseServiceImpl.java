@@ -20,13 +20,21 @@ public class CourseServiceImpl implements CourseService {
     //모든 코스 조회
     @Override
     public List<CourseResponseDto> getAllCourses(int memberId) {
-        return courseMapper.selectAllCourses(memberId);
+        List<CourseResponseDto> courses = courseMapper.selectAllCourses(memberId);
+        for(CourseResponseDto course : courses){
+            List<CoursePlaceDto> coursePlaces = getCoursePlaces(course.getCourseId());
+            course.setCoursePlaces(coursePlaces);
+        }
+        return courses;
     }
 
     //단일 코스 조회
     @Override
     public CourseResponseDto getCourseById(HashMap<String, Object> map) {
-        return courseMapper.selectCourseById(map);
+        CourseResponseDto course = courseMapper.selectCourseById(map);
+        List<CoursePlaceDto> coursePlaces = getCoursePlaces(course.getCourseId());
+        course.setCoursePlaces(coursePlaces);
+        return course;
     }
 
     //어떤 코스의 세부정보(장소 + 내용) 조회

@@ -8,6 +8,7 @@ import lombok.Setter;
 @Setter
 public class CoursePlaceDto {
     private int coursePlaceId;
+    private int courseId;
     private int placeId;
     private String content;
     private String createdDate;
