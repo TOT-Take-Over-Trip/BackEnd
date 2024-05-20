@@ -38,6 +38,9 @@ public class CourseServiceImpl implements CourseService {
         map.put("courseId", courseId);
         map.put("memberId", memberId);
         CourseResponseDto course = courseMapper.selectCourseById(map);
+        if(memberId!=course.getMemberId()) {
+            courseMapper.updateHit(courseId); //내가 만든 코스가 아니면 조회수 증가
+        }
         List<CoursePlaceDto> coursePlaces = getCoursePlaces(course.getCourseId());
         course.setCoursePlaces(coursePlaces);
         return course;

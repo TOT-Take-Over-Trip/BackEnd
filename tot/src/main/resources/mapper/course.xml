@@ -77,6 +77,13 @@
         VALUES (#{memberId}, #{title}, #{content})
     </insert>
 
+    <!--조회수 증가-->
+    <update id="updateHit" parameterType="int">
+        UPDATE course
+        SET hit = hit+1
+        WHERE course_id = #{courseId}
+    </update>
+
     <update id="modifyCourse" parameterType="CourseDto">
         UPDATE
             course

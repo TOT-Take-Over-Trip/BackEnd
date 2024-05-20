@@ -23,6 +23,9 @@ public interface CourseMapper {
     //코스에 속해있는 장소 단일 조회
     CoursePlaceDto selectCoursePlaceById(int coursePlaceId);
 
+    //조회수 증가
+    void updateHit(int courseId);
+
     //코스에 장소 추가
     void insertCoursePlace(HashMap<String, Object> map);
 
