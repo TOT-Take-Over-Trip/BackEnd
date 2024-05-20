@@ -10,6 +10,7 @@ public interface PlaceMapper {
 
     List<PlaceDto> selectAll();
     PlaceDto selectById(Long id);
-    void insert(PlaceDto place);
+    void insertPlace(PlaceDto place);
+    PlaceDto selectPlace(String name);
 
 }
