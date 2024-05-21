@@ -5,6 +5,7 @@ import com.trip.auth.model.dto.SignUpUserDto;
 import com.trip.auth.service.AuthService;
 import com.trip.member.model.MemberDto;
 import com.trip.member.service.MemberService;
+import java.util.HashMap;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +24,7 @@ public class AuthController {
     protected final PasswordEncoder passwordEncoder;
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody LoginUserDto loginUserDto){
+    public ResponseEntity<HashMap<String, Object>> login(@RequestBody LoginUserDto loginUserDto){
         log.info("Member login request: {}", loginUserDto.getId());
         MemberDto member = memberService.getMemberByLoginId(loginUserDto.getId()); //TODO: 예외처리
         return authService.login(loginUserDto);
