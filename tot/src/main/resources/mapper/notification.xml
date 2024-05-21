@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.trip.notification.model.mapper.NotificationMapper">
+
+  <resultMap type="NotificationDto" id="notification">
+    <result column="notification_id" property="notificationId" />
+    <result column="member_id" property="memberId" />
+    <result column="content" property="content" />
+    <result column="read_or_not" property="readOrNot" />
+    <result column="created_date" property="createdDate" />
+    <result column="updated_date" property="updatedDate" />
+    <result column="status" property="status" />
+  </resultMap>
+
+  <!-- 유저 알림 조회 -->
+  <select id="selectNotifications" parameterType="int" resultMap="notification">
+    SELECT
+      notification_id, member_id, content, read_or_not, created_date, updated_date, status
+    FROM
+      notification
+    WHERE
+      member_id = #{memberId} and read_or_not = false;
+  </select>
+
+  <insert id="insertNotification" parameterType="map">
+    INSERT INTO NOTIFICATION(member_id, content)
+    VALUES (#{memberId}, #{content})
+  </insert>
+
+
+</mapper>
