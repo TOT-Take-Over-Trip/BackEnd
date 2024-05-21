@@ -12,5 +12,6 @@ public interface PlaceMapper {
     PlaceDto selectById(int id);
     void insertPlace(PlaceDto place);
     PlaceDto selectPlace(String name);
+    List<PlaceDto> selectByKeyword(String keyword);
 
 }

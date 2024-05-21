@@ -9,5 +9,5 @@ public interface PlaceService {
     List<PlaceDto> getPlaces();
     PlaceDto getPlaceById(int placeId);
     void insertPlace(PlaceDto placeDto);
-
+    List<PlaceDto> getByKeyword(String keyword);
 }

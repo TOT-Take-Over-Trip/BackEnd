@@ -22,8 +22,13 @@ public class PlaceController {
     }
 
     @GetMapping
-    public List<PlaceDto> getPlaces() {
-        return placeService.getPlaces();
+    public List<PlaceDto> getPlaces(@RequestParam("keyword") String keyword) {
+        if(keyword == null) {
+            return placeService.getPlaces();
+        }
+        else{
+            return placeService.getByKeyword(keyword);
+        }
     }
 
     @GetMapping("/{placeId}")

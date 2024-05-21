@@ -89,4 +89,9 @@ public class PlaceServiceImpl implements PlaceService{
     public void insertPlace(PlaceDto placeDto) {
         placeMapper.insertPlace(placeDto);
     }
+
+    @Override
+    public List<PlaceDto> getByKeyword(String keyword) {
+        return placeMapper.selectByKeyword(keyword);
+    }
 }

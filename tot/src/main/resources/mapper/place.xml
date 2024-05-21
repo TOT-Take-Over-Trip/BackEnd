@@ -43,6 +43,14 @@
     where place_id = #{placeId}
   </select>
 
+  <!--이름으로 Like 검색-->
+  <select id="selectByKeyword" parameterType="String" resultMap="place">
+    select *
+    from place
+    WHERE name LIKE CONCAT('%', #{keyword}, '%')
+  </select>
+
+
 
 
 </mapper>
