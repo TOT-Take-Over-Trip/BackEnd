@@ -1,5 +1,6 @@
 package com.trip.course.model.dto;
 
+import com.trip.place.model.PlaceDto;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,6 +11,7 @@ public class CoursePlaceDto {
     private int coursePlaceId;
     private int courseId;
     private int placeId;
+    private PlaceDto place;
     private String content;
     private String createdDate;
     private String updatedDate;

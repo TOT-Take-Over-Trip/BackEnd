@@ -7,6 +7,7 @@ import com.trip.course.model.dto.CourseResponseDto;
 import com.trip.course.model.mapper.CourseMapper;
 import com.trip.member.model.MemberDto;
 import com.trip.member.model.mapper.MemberMapper;
+import com.trip.place.model.mapper.PlaceMapper;
 import java.util.HashMap;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,7 @@ public class CourseServiceImpl implements CourseService {
 
     private final CourseMapper courseMapper;
     private final MemberMapper memberMapper;
+    private final PlaceMapper placeMapper;
 
     //모든 코스 조회
     @Override
@@ -26,6 +28,9 @@ public class CourseServiceImpl implements CourseService {
         List<CourseResponseDto> courses = courseMapper.selectAllCourses(memberId);
         for(CourseResponseDto course : courses){
             List<CoursePlaceDto> coursePlaces = getCoursePlaces(course.getCourseId());
+            for(CoursePlaceDto coursePlaceDto : coursePlaces){
+                coursePlaceDto.setPlace(placeMapper.selectById(coursePlaceDto.getPlaceId()));
+            }
             course.setCoursePlaces(coursePlaces);
         }
         return courses;
@@ -42,6 +47,9 @@ public class CourseServiceImpl implements CourseService {
             courseMapper.updateHit(courseId); //내가 만든 코스가 아니면 조회수 증가
         }
         List<CoursePlaceDto> coursePlaces = getCoursePlaces(course.getCourseId());
+        for(CoursePlaceDto coursePlaceDto : coursePlaces){
+            coursePlaceDto.setPlace(placeMapper.selectById(coursePlaceDto.getPlaceId()));
+        }
         course.setCoursePlaces(coursePlaces);
         return course;
     }
