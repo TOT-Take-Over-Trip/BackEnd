@@ -7,6 +7,7 @@ import com.trip.member.model.MemberDto;
 import com.trip.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +22,7 @@ public class AuthController {
     protected final PasswordEncoder passwordEncoder;
 
     @PostMapping("/login")
-    public String login(@RequestBody LoginUserDto loginUserDto){
+    public ResponseEntity<String> login(@RequestBody LoginUserDto loginUserDto){
         log.info("Member login request: {}", loginUserDto.getId());
         MemberDto member = memberService.getMemberByLoginId(loginUserDto.getId()); //TODO: 예외처리
         return authService.login(loginUserDto);
