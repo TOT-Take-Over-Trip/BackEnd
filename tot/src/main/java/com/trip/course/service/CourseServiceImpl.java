@@ -89,6 +89,7 @@ public class CourseServiceImpl implements CourseService {
         map.put("courseId", courseId);
         map.put("placeId", coursePlace.getPlaceId());
         map.put("content", coursePlace.getContent());
+        map.put("sequence", coursePlace.getSequence());
         courseMapper.insertCoursePlace(map);
     }
 

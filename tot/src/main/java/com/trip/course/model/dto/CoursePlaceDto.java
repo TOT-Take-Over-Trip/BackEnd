@@ -13,6 +13,7 @@ public class CoursePlaceDto {
     private int placeId;
     private PlaceDto place;
     private String content;
+    private int sequence;
     private String createdDate;
     private String updatedDate;
     private String status;

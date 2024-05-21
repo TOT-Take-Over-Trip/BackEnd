@@ -22,6 +22,7 @@
         <result column="course_id" property="courseId" />
         <result column="place_id" property="placeId" />
         <result column="content" property="content" />
+        <result column="sequence" property="sequence" />
         <result column="created_date" property="createdDate" />
         <result column="updated_date" property="updatedDate" />
         <result column="status" property="status" />
@@ -53,13 +54,13 @@
 
     <!--코스 장소 등록-->
     <insert id="insertCoursePlace" parameterType="map">
-        INSERT INTO course_place(course_id, place_id, content)
-        VALUES (#{courseId}, #{placeId}, #{content})
+        INSERT INTO course_place(course_id, place_id, content, sequence)
+        VALUES (#{courseId}, #{placeId}, #{content}, #{sequence})
     </insert>
 
     <!--코스에 속해있는 장소 전부 조회-->
     <select id="selectCoursePlaces" parameterType="int" resultMap="coursePlace">
-        SELECT course_place_id, course_id, place_id, content, created_date, updated_date, status
+        SELECT course_place_id, course_id, place_id, content, sequence, created_date, updated_date, status
         FROM course_place
         WHERE course_id = #{courseId}
     </select>
