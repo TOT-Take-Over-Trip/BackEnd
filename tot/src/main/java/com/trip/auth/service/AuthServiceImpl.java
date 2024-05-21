@@ -32,7 +32,7 @@ public class AuthServiceImpl implements AuthService {
         }
         HashMap<String, Object> map = new HashMap<>();
         map.put("memberId", member.getMemberId());
-        map.put("id", jwtProvider.createAccessToken(loginUserDto.getId()));
+        map.put("jwtToken", jwtProvider.createAccessToken(loginUserDto.getId()));
         return new ResponseEntity<>(map,HttpStatus.OK);
     }
 
