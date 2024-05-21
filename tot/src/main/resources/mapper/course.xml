@@ -72,6 +72,18 @@
         WHERE course_place_id = #{coursePlaceId} and status = 'active'
     </select>
 
+    <!--특정 회원이 가지고 있는 코스 전부 조회-->
+    <select id="getCourseByMemberId" parameterType="int" resultMap="courseResponseDto">
+        SELECT
+            DISTINCT c.*,
+                     COALESCE(cl.is_like, 0) as is_like
+        FROM
+            course c
+                LEFT JOIN (SELECT course_id, is_like FROM course_like WHERE member_id = #{memberId}) cl ON c.course_id = cl.course_id
+        WHERE
+            status = 'active' and c.member_id = #{memberId}
+    </select>
+
     <!--코스 등록-->
     <insert id="insertCourse" parameterType="CourseDto" useGeneratedKeys="true" keyProperty="courseId">
         INSERT INTO course(member_id, title, content)

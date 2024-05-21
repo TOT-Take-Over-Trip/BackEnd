@@ -23,6 +23,9 @@ public interface CourseMapper {
     //코스에 속해있는 장소 단일 조회
     CoursePlaceDto selectCoursePlaceById(int coursePlaceId);
 
+    //특정 회원이 보유한 코스 전부 조회
+    List<CourseResponseDto> getCourseByMemberId(int memberId);
+
     //조회수 증가
     void updateHit(int courseId);
 
