@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be78911b-030a-4199-bc8a-9249caaec006" name="Changes" comment="fix: DTO 변수명 수정, 빠진 변수 추가">
+    <list default="true" id="be78911b-030a-4199-bc8a-9249caaec006" name="Changes" comment="feat: 알림 추가, 알림 조회 구현">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/member/controller/MemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/member/controller/MemberController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/member/model/mapper/MemberMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/member/model/mapper/MemberMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/member/service/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/member/service/MemberService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/member/service/MemberServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/member/service/MemberServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/course/service/CourseServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/course/service/CourseServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/post/controller/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/post/controller/PostController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -246,7 +244,14 @@
       <option name="project" value="LOCAL" />
       <updated>1716193490018</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="feat: 알림 추가, 알림 조회 구현">
+      <created>1716301355747</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1716301355747</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -277,6 +282,7 @@
     <MESSAGE value="feat: 아이템, 주문 관련 CRUD 구현 - 주문 관련은 Item에서 전부 처리" />
     <MESSAGE value="fix: 아이템, 주문 관련 버그 수정, 주문 생성시 트랜잭션 처리 및 예외처리 구현" />
     <MESSAGE value="fix: DTO 변수명 수정, 빠진 변수 추가" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: DTO 변수명 수정, 빠진 변수 추가" />
+    <MESSAGE value="feat: 알림 추가, 알림 조회 구현" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: 알림 추가, 알림 조회 구현" />
   </component>
 </project>

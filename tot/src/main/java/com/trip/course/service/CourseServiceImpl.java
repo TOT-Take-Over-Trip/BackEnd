@@ -7,6 +7,7 @@ import com.trip.course.model.dto.CourseResponseDto;
 import com.trip.course.model.mapper.CourseMapper;
 import com.trip.member.model.MemberDto;
 import com.trip.member.model.mapper.MemberMapper;
+import com.trip.notification.model.mapper.NotificationMapper;
 import com.trip.place.model.mapper.PlaceMapper;
 import java.util.Collections;
 import java.util.Comparator;
@@ -23,6 +24,7 @@ public class CourseServiceImpl implements CourseService {
     private final CourseMapper courseMapper;
     private final MemberMapper memberMapper;
     private final PlaceMapper placeMapper;
+    private final NotificationMapper notificationMapper;
 
     //모든 코스 조회
     @Override
@@ -129,9 +131,16 @@ public class CourseServiceImpl implements CourseService {
         map.put("courseId", courseId);
         map.put("memberId", memberId);
         CourseResponseDto course = getCourseById(courseId, memberId);
+        //원래 주인
+        int originalMemberId = course.getMemberId();
         MemberDto member = memberMapper.selectMemberById(memberId);
         //TODO: 코스 살 수 있는지 점검필요 -> course 가격과 member 포인트 비교)
         courseMapper.takeOverCourse(map);
+        HashMap<String, Object> notificationMap = new HashMap<>();
+        notificationMap.put("memberId", originalMemberId);
+        String content = course.getTitle() + " 코스가 " +member.getName() +"님에게 인수되었습니다!";
+        notificationMap.put("content", content);
+        notificationMapper.insertNotification(notificationMap);
     }
 
     //코스 삭제
