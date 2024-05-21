@@ -37,9 +37,11 @@ public class MemberServiceImpl implements MemberService {
     public MemberDto getMemberById(int memberId) throws IOException {
         MemberDto member = memberMapper.selectMemberById(memberId);
         String filePath = member.getProfileImage();
-        byte[] bytes = Files.readAllBytes(Paths.get(filePath)); //실제 파일 불러오기
-        String base64EncodedString = Base64.getEncoder().encodeToString(bytes); //인코딩
-        member.setProfileImage(base64EncodedString); //인코딩 정보 넣어주기
+        if (filePath != null) {
+            byte[] bytes = Files.readAllBytes(Paths.get(filePath)); //실제 파일 불러오기
+            String base64EncodedString = Base64.getEncoder().encodeToString(bytes); //인코딩
+            member.setProfileImage(base64EncodedString); //인코딩 정보 넣어주기
+        }
         return member;
     }
 
