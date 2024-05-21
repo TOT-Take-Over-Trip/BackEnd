@@ -6,11 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="be78911b-030a-4199-bc8a-9249caaec006" name="Changes" comment="fix: DTO 변수명 수정, 빠진 변수 추가">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/place/controller/PlaceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/place/controller/PlaceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/place/model/mapper/PlaceMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/place/model/mapper/PlaceMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/place/service/PlaceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/place/service/PlaceService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/place/service/PlaceServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/place/service/PlaceServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tot/src/main/resources/mapper/place.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/resources/mapper/place.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/course/controller/CourseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/course/controller/CourseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/course/model/mapper/CourseMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/course/model/mapper/CourseMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/course/service/CourseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/course/service/CourseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/course/service/CourseServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/course/service/CourseServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tot/src/main/resources/mapper/course.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/resources/mapper/course.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,7 +144,7 @@
       <workItem from="1716163528514" duration="10378000" />
       <workItem from="1716176330203" duration="19862000" />
       <workItem from="1716249544126" duration="6379000" />
-      <workItem from="1716264593476" duration="6048000" />
+      <workItem from="1716264593476" duration="9460000" />
     </task>
     <task id="LOCAL-00001" summary="feat: 멤버 로그인 아이디로 조회 추가">
       <created>1714974223046</created>

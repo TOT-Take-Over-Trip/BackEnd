@@ -45,8 +45,8 @@ public class CourseController {
 
     // TODO: 구현해야 함
     @PutMapping("/{courseId}")
-    public void updateCourse(@PathVariable(value = "courseId") Long courseId, @RequestBody CourseDto course) {
-        courseService.modifyCourse(course);
+    public void updateCourse(@PathVariable(value = "courseId") int courseId, @RequestBody CourseDto course) {
+        courseService.modifyCourse(courseId, course);
     }
 
     // 코스 인수

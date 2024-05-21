@@ -8,6 +8,8 @@ import com.trip.course.model.mapper.CourseMapper;
 import com.trip.member.model.MemberDto;
 import com.trip.member.model.mapper.MemberMapper;
 import com.trip.place.model.mapper.PlaceMapper;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -50,6 +52,12 @@ public class CourseServiceImpl implements CourseService {
         for(CoursePlaceDto coursePlaceDto : coursePlaces){
             coursePlaceDto.setPlace(placeMapper.selectById(coursePlaceDto.getPlaceId()));
         }
+        Collections.sort(coursePlaces, new Comparator<CoursePlaceDto>() {
+            @Override
+            public int compare(CoursePlaceDto o1, CoursePlaceDto o2) {
+                return o1.getSequence() - o2.getSequence();
+            }
+        });
         course.setCoursePlaces(coursePlaces);
         return course;
     }
@@ -105,7 +113,12 @@ public class CourseServiceImpl implements CourseService {
 
     //코스 수정
     @Override
-    public void modifyCourse(CourseDto course) {
+    public void modifyCourse(int courseId, CourseDto course) {
+        courseMapper.deleteCoursePlaceByCourseId(courseId); //기존에 저장되어있는 coursePlace 전부 삭제
+        course.setCourseId(courseId);
+        for (CoursePlaceDto coursePlace : course.getCoursePlaces()) {
+            insertCoursePlace(courseId, coursePlace);   //코스 장소들 넣어주기
+        }
         courseMapper.modifyCourse(course);
     }
 

@@ -34,7 +34,7 @@ public interface CourseService {
     void insertCourse(CourseDto course);
 
     // 코스 수정
-    void modifyCourse(CourseDto course);
+    void modifyCourse(int courseId, CourseDto course);
 
     // 코스 인수
     void takeOverCourse(int courseId, int memberId);

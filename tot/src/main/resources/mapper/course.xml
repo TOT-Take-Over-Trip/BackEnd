@@ -62,14 +62,14 @@
     <select id="selectCoursePlaces" parameterType="int" resultMap="coursePlace">
         SELECT course_place_id, course_id, place_id, content, sequence, created_date, updated_date, status
         FROM course_place
-        WHERE course_id = #{courseId}
+        WHERE course_id = #{courseId} and status = 'active'
     </select>
 
     <!--코스에 속해있는 장소 단일 조회-->
     <select id="selectCoursePlaceById" parameterType="int" resultMap="coursePlace">
         SELECT course_place_id, course_id, place_id, content, created_date, updated_date, status
         FROM course_place
-        WHERE course_place_id = #{coursePlaceId}
+        WHERE course_place_id = #{coursePlaceId} and status = 'active'
     </select>
 
     <!--코스 등록-->
@@ -99,17 +99,13 @@
         WHERE member_id = #{memberId} and course_id = #{courseId}
     </update>
 
+    <!--코스 업데이트-->
     <update id="modifyCourse" parameterType="CourseDto">
         UPDATE
             course
         SET
-            member_id = #{memberId}
-        ,   title = #{title}
+            title = #{title}
         ,   content = #{content}
-        ,   hit = #{hit}
-        ,   created_date = #{createdDate}
-        ,   updated_date = now()
-        ,   status = #{status}
         WHERE
             course_id = #{courseId}
     </update>
@@ -127,6 +123,16 @@
     <update id="deleteCourse" parameterType="CourseDto">
         UPDATE
             course
+        SET
+            status = 'inactive'
+        WHERE
+            course_id = #{courseId}
+    </update>
+
+    <!-- 특정 코스 내부의 coursePlace 전체 삭제 (업데이트시 기존꺼 전부 상태 삭제로 바꾸기)-->
+    <update id="deleteCoursePlaceByCourseId" parameterType="int">
+        UPDATE
+            course_place
         SET
             status = 'inactive'
         WHERE
