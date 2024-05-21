@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Base64;
+import java.util.HashMap;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -65,5 +66,10 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public void deleteMember(int memberId) {
         memberMapper.deleteMemberById(memberId);
+    }
+
+    @Override
+    public void updatePoint(HashMap<String, Integer> map) {
+        memberMapper.updatePoint(map);
     }
 }

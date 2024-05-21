@@ -69,7 +69,7 @@ public class ItemServiceImpl implements ItemService{
         if(member.getPoint()>=item.getPrice()) {
             HashMap<String, Integer> map = new HashMap<>();
             map.put("memberId", memberId);
-            map.put("price", orderPrice);
+            map.put("price", -orderPrice);
             memberMapper.updatePoint(map);
         }else{
             throw new RuntimeException("멤버 포인트가 부족합니다.");

@@ -75,7 +75,7 @@
 		UPDATE
 			MEMBER
 		SET
-			point = point - #{price}
+			point = point + #{price}
 		WHERE
 			member_id = #{memberId}
 	</update>
