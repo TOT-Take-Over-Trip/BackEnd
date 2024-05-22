@@ -152,6 +152,6 @@ public class CourseServiceImpl implements CourseService {
     //특정 회원이 가지고 있는 코스 전부 조회
     @Override
     public List<CourseResponseDto> getCourseByMemberId(int memberId) {
-        return courseMapper.getCourseByMemberId(memberId);
+        return courseMapper.getCoursesByMemberId(memberId);
     }
 }

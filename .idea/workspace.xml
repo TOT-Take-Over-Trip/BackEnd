@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be78911b-030a-4199-bc8a-9249caaec006" name="Changes" comment="feat: 특정 회원의 코스 조회 구현">
+    <list default="true" id="be78911b-030a-4199-bc8a-9249caaec006" name="Changes" comment="feat: 특정 회원의 코스 조회 구현 - 컨트롤러">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/course/controller/CourseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/course/controller/CourseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/course/service/CourseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/course/service/CourseService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tot/src/main/resources/mapper/course.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/resources/mapper/course.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/course/model/mapper/CourseMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/course/model/mapper/CourseMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/course/service/CourseServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/course/service/CourseServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -259,7 +258,21 @@
       <option name="project" value="LOCAL" />
       <updated>1716307117241</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="feat: 특정 회원의 코스 조회 구현 - 컨트롤러">
+      <created>1716356804201</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1716356804201</updated>
+    </task>
+    <task id="LOCAL-00018" summary="feat: 특정 회원의 코스 조회 구현 - 컨트롤러">
+      <created>1716356814529</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1716356814529</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -292,6 +305,7 @@
     <MESSAGE value="fix: DTO 변수명 수정, 빠진 변수 추가" />
     <MESSAGE value="feat: 알림 추가, 알림 조회 구현" />
     <MESSAGE value="feat: 특정 회원의 코스 조회 구현" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: 특정 회원의 코스 조회 구현" />
+    <MESSAGE value="feat: 특정 회원의 코스 조회 구현 - 컨트롤러" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: 특정 회원의 코스 조회 구현 - 컨트롤러" />
   </component>
 </project>
