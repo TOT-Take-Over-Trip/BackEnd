@@ -73,7 +73,7 @@
     </select>
 
     <!--특정 회원이 가지고 있는 코스 전부 조회-->
-    <select id="getCourseByMemberId" parameterType="int" resultMap="courseResponseDto">
+    <select id="getCoursesByMemberId" parameterType="int" resultMap="courseResponseDto">
         SELECT
             DISTINCT c.*,
                      COALESCE(cl.is_like, 0) as is_like
