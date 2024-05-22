@@ -5,6 +5,7 @@ import com.trip.course.model.dto.CourseResponseDto;
 import com.trip.course.service.CourseService;
 import java.util.HashMap;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ import java.util.List;
 @RequestMapping("/courses")
 @RequiredArgsConstructor
 @CrossOrigin("*")
+@Slf4j
 public class CourseController {
 
     private final CourseService courseService;
@@ -64,5 +66,13 @@ public class CourseController {
     @PatchMapping("/{courseId}")
     public void patchCourse(@PathVariable(value = "courseId") Long courseId, @RequestBody CourseDto course) {
 
+    }
+
+    @PostMapping("/delete/{courseId}")
+    public void deleteCourse(@PathVariable(value = "courseId") int courseId) {
+        log.info("CourseController deleteCourse 호출");
+        CourseDto courseDto = new CourseDto();
+        courseDto.setCourseId(courseId);
+        courseService.deleteCourse(courseDto);
     }
 }
