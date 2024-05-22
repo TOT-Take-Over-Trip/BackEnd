@@ -5,6 +5,7 @@ import com.trip.member.model.MemberDto;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
+import org.springframework.web.multipart.MultipartFile;
 
 public interface MemberService {
 
@@ -14,7 +15,7 @@ public interface MemberService {
 
     MemberDto getMemberByLoginId(String id);
 
-    void createMember(MemberDto memberDto);
+    void createMember(MemberDto memberDto, MultipartFile profileImage) throws IOException;
 
     void updateMember(int memberId, MemberDto memberDto);
 

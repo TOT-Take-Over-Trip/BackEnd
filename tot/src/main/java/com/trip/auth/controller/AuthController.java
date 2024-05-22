@@ -5,12 +5,14 @@ import com.trip.auth.model.dto.SignUpUserDto;
 import com.trip.auth.service.AuthService;
 import com.trip.member.model.MemberDto;
 import com.trip.member.service.MemberService;
+import java.io.IOException;
 import java.util.HashMap;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/auth")
@@ -35,8 +37,10 @@ public class AuthController {
 
     }
 
-    @PostMapping("/signup")
-    public void signUp(@RequestBody SignUpUserDto signUpUserDto){
+
+    @PostMapping(value = "/signup", consumes = {"multipart/form-data"})
+    public void signUp(@RequestPart("signUpUserDto") SignUpUserDto signUpUserDto, @RequestPart("profileImage") MultipartFile profileImage)
+        throws IOException {
         String encodedPassword = passwordEncoder.encode(signUpUserDto.getPassword());
         MemberDto member = MemberDto.builder()
             .id(signUpUserDto.getId())
@@ -45,7 +49,7 @@ public class AuthController {
             .email(signUpUserDto.getEmail())
             .phoneNumber(signUpUserDto.getPhoneNumber())
             .build();
-        memberService.createMember(member);
+        memberService.createMember(member, profileImage);
     }
 
 

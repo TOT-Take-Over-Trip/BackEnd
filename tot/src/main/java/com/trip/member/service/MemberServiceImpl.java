@@ -2,16 +2,19 @@ package com.trip.member.service;
 
 import com.trip.member.model.MemberDto;
 import com.trip.member.model.mapper.MemberMapper;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Base64;
 import java.util.HashMap;
+import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import org.springframework.web.multipart.MultipartFile;
 
 @Service
 @RequiredArgsConstructor
@@ -54,7 +57,18 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public void createMember(MemberDto memberDto) {
+    public void createMember(MemberDto memberDto, MultipartFile profileImage) throws IOException {
+        String fullPath = "";
+        if(profileImage!=null){
+            //확장자 추출
+            int pos = profileImage.getOriginalFilename().lastIndexOf(".");
+            String ext = profileImage.getOriginalFilename().substring(pos+1);
+
+            String uuid = UUID.randomUUID().toString();
+            fullPath = fileDir + uuid + "." + ext;
+            profileImage.transferTo(new File(fullPath));
+            memberDto.setProfileImage(fullPath);
+        }
         memberMapper.insertMember(memberDto);
     }
 
