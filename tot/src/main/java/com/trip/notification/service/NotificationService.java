@@ -9,4 +9,5 @@ public interface NotificationService {
 
     void insertNotification(int memberId, String content);
 
+    void readNotification(int notificationId);
 }

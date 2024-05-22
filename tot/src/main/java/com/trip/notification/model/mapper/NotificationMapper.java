@@ -12,4 +12,5 @@ public interface NotificationMapper {
 
     void insertNotification(HashMap<String, Object> map);
 
+    void readNotification(int notificationId);
 }

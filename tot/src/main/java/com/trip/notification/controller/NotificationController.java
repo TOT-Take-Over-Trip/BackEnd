@@ -6,6 +6,7 @@ import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,6 +29,11 @@ public class NotificationController {
     @PostMapping()
     public void insertNotification(@RequestParam("memberId") int memberId, @RequestBody String content){
         notificationService.insertNotification(memberId, content);
+    }
+
+    @PostMapping("/read/{notificationId}")
+    public void readNotification(@PathVariable("notificationId") int notificationId) {
+        notificationService.readNotification(notificationId);
     }
 
 }

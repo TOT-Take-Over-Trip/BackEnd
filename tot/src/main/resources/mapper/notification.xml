@@ -29,5 +29,10 @@
     VALUES (#{memberId}, #{content})
   </insert>
 
+  <update id="readNotification" parameterType="int">
+    UPDATE notification
+    SET read_or_not = true
+    WHERE notification_id = #{notificationId}
+  </update>
 
 </mapper>
