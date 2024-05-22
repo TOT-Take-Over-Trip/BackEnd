@@ -111,6 +111,20 @@
         WHERE member_id = #{memberId} and course_id = #{courseId}
     </update>
 
+    <!--course 좋아요 개수 증가-->
+    <update id="addLikeCount" parameterType="int">
+        UPDATE course
+        SET course_like_count = course_like_count + 1
+        WHERE course_id = #{courseId}
+    </update>
+
+    <!--course 좋아요 개수 감소-->
+    <update id="cancelLikeCount" parameterType="int">
+        UPDATE course
+        SET course_like_count = course_like_count - 1
+        WHERE course_id = #{courseId}
+    </update>
+
     <!--코스 업데이트-->
     <update id="modifyCourse" parameterType="CourseDto">
         UPDATE

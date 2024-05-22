@@ -16,6 +16,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -82,6 +83,7 @@ public class CourseServiceImpl implements CourseService {
         map.put("courseId", courseId);
         map.put("memberId", memberId);
         courseMapper.addLike(map);
+        courseMapper.addLikeCount(courseId);
     }
 
     @Override
@@ -90,6 +92,7 @@ public class CourseServiceImpl implements CourseService {
         map.put("courseId", courseId);
         map.put("memberId", memberId);
         courseMapper.cancelLike(map);
+        courseMapper.cancelLikeCount(courseId);
     }
 
     //코스 세부정보 넣기
@@ -134,13 +137,29 @@ public class CourseServiceImpl implements CourseService {
         //원래 주인
         int originalMemberId = course.getMemberId();
         MemberDto member = memberMapper.selectMemberById(memberId);
-        //TODO: 코스 살 수 있는지 점검필요 -> course 가격과 member 포인트 비교)
-        courseMapper.takeOverCourse(map);
-        HashMap<String, Object> notificationMap = new HashMap<>();
-        notificationMap.put("memberId", originalMemberId);
-        String content = "<span style='color: blue;'>" + course.getTitle()  + " 코스가" + "</span><br>" + "<span style='color: red;'>" + member.getId() + "</span>" +"님에게 인수되었습니다!";
-        notificationMap.put("content", content);
-        notificationMapper.insertNotification(notificationMap);
+        //코스 가격
+        int coursePrice = course.getCourseLikeCount()*10 + course.getHit();
+        if(coursePrice<member.getPoint()) {
+            courseMapper.takeOverCourse(map);
+            HashMap<String, Object> notificationMap = new HashMap<>();
+            notificationMap.put("memberId", originalMemberId);
+            String content =
+                "<span style='color: blue;'>" + course.getTitle() + " 코스가" + "</span><br>"
+                    + "<span style='color: red;'>" + member.getId() + "</span>" + "님에게 인수되었습니다!";
+            notificationMap.put("content", content);
+            notificationMapper.insertNotification(notificationMap);
+            //구매자 돈 감소
+            HashMap<String, Integer> pointMap = new HashMap<>();
+            pointMap.put("memberId", memberId);
+            pointMap.put("price", -coursePrice);
+            memberMapper.updatePoint(pointMap);
+
+            //판매자 돈 증가
+            HashMap<String, Integer> pointMap2 = new HashMap<>();
+            pointMap2.put("memberId", originalMemberId);
+            pointMap2.put("price", coursePrice/2);
+            memberMapper.updatePoint(pointMap2);
+        }
     }
 
     //코스 삭제

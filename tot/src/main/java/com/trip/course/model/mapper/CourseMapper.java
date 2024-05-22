@@ -35,6 +35,12 @@ public interface CourseMapper {
     //좋아요 취소
     void cancelLike(HashMap<String, Object> map);
 
+    //코스 좋아요 개수 증가
+    void addLikeCount(int courseId);
+
+    //코스 좋아요 개수 감소
+    void cancelLikeCount(int courseId);
+
     //코스에 장소 추가
     void insertCoursePlace(HashMap<String, Object> map);
 

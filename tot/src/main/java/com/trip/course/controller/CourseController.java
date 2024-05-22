@@ -40,12 +40,12 @@ public class CourseController {
         return courseService.getCourseByMemberId(memberId);
     }
 
-    @PostMapping("/like/{courseId}")
+    @PostMapping("/{courseId}/like")
     public void addLike(@PathVariable("courseId") int courseId, @RequestParam("memberId") int memberId){
         courseService.addLike(courseId,memberId);
     }
 
-    @PostMapping("/unlike/{courseId}")
+    @PostMapping("/{courseId}/unlike")
     public void cancelLike(@PathVariable("courseId") int courseId, @RequestParam("memberId") int memberId){
         courseService.cancelLike(courseId,memberId);
     }

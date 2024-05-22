@@ -6,9 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="be78911b-030a-4199-bc8a-9249caaec006" name="Changes" comment="fix: 특정 회원의 코스 조회 coursePlace 정보 넣어주기">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/auth/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/auth/controller/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/member/service/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/member/service/MemberService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/member/service/MemberServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/member/service/MemberServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/course/controller/CourseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/course/controller/CourseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/course/model/mapper/CourseMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/course/model/mapper/CourseMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/course/service/CourseServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/course/service/CourseServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tot/src/main/resources/mapper/course.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/resources/mapper/course.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
