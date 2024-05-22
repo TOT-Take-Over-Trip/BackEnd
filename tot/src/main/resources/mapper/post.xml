@@ -125,14 +125,40 @@
     WHERE post_comment_id = #{postCommentId}
   </select>
 
-  <!--좋아요 누르기 -없으면 insert 있으면 상태변화-->
-  <insert id="insertOrUpdateLike" parameterType="map">
+<!--  &lt;!&ndash;좋아요 누르기 -없으면 insert 있으면 상태변화&ndash;&gt;-->
+<!--  <insert id="insertOrUpdateLike" parameterType="map">-->
+<!--    INSERT INTO post_like (post_id, member_id, is_like)-->
+<!--    VALUES (#{postId}, #{memberId}, 1)-->
+<!--    ON DUPLICATE KEY UPDATE is_like = NOT is_like;-->
+<!--  </insert>-->
+
+  <!--좋아요 활성화-->
+  <insert id="addLike" parameterType="map">
     INSERT INTO post_like (post_id, member_id, is_like)
     VALUES (#{postId}, #{memberId}, 1)
     ON DUPLICATE KEY UPDATE is_like = NOT is_like;
   </insert>
 
+  <!--좋아요 취소-->
+  <update id="cancelLike" parameterType="map">
+    UPDATE post_like
+    SET is_like = false
+    WHERE member_id = #{memberId} and post_id = #{postId}
+  </update>
 
+  <!--post 좋아요 개수 증가-->
+  <update id="addLikeCount" parameterType="int">
+    UPDATE post
+    SET post_like_count = post_like_count + 1
+    WHERE post_id = #{postId}
+  </update>
+
+  <!--post 좋아요 개수 감소-->
+  <update id="cancelLikeCount" parameterType="int">
+    UPDATE post
+    SET post_like_count = post_like_count - 1
+    WHERE post_id = #{postId}
+  </update>
 
   <update id="updatePost" parameterType="PostDto">
     UPDATE

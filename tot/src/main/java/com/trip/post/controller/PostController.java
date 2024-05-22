@@ -110,11 +110,19 @@ public class PostController {
      * @param memberId
      */
     @PostMapping("/{postId}/like")
-    public void insertOrUpdateLike(@PathVariable("postId") int postId, @RequestParam("memberId") int memberId){
+    public void addLike(@PathVariable("postId") int postId, @RequestParam("memberId") int memberId){
         HashMap<String, Integer> map = new HashMap<>();
         map.put("postId", postId);
         map.put("memberId", memberId);
-        postService.insertOrUpdateLike(map);
+        postService.addLike(map);
+    }
+
+    @PostMapping("/{postId}/unlike")
+    public void cancelLike(@PathVariable("postId") int postId, @RequestParam("memberId") int memberId){
+        HashMap<String, Integer> map = new HashMap<>();
+        map.put("postId", postId);
+        map.put("memberId", memberId);
+        postService.cancelLike(map);
     }
 
     @PutMapping("/{postId}")

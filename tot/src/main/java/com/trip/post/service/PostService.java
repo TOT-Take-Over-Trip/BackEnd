@@ -24,7 +24,9 @@ public interface PostService {
 
     PostCommentDto insertPostComment(PostCommentDto postCommentDto);
 
-    void insertOrUpdateLike(HashMap<String,Integer> map);
+    void addLike(HashMap<String,Integer> map);
+
+    void cancelLike(HashMap<String,Integer> map);
 
     void createPost(PostDto postDto, MultipartFile thumbnail) throws IOException;
 

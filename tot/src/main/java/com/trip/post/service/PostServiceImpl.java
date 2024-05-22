@@ -115,8 +115,15 @@ public class PostServiceImpl implements PostService{
     }
 
     @Override
-    public void insertOrUpdateLike(HashMap<String, Integer> map) {
-        postMapper.insertOrUpdateLike(map);
+    public void addLike(HashMap<String, Integer> map) {
+        postMapper.addLikeCount(map.get("postId"));
+        postMapper.addLike(map);
+    }
+
+    @Override
+    public void cancelLike(HashMap<String, Integer> map) {
+        postMapper.cancelLikeCount(map.get("postId"));
+        postMapper.cancelLike(map);
     }
 
     @Override
