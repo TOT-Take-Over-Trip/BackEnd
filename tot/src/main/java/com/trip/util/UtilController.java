@@ -54,7 +54,9 @@ public class UtilController {
 
             HashMap<String, Object> map = new HashMap<>();
             map.put("memberId", memberId);
-            String content = "Daily 지급 포인트: " + "[게시글로 얻은 포인트: "+ postPoint + "포인트] & [코스로 얻은 포인트: " + coursePoint + "]";
+            String content = "Daily 지급 포인트<br>" +
+                "[post: <span style='color: blue;'>" + postPoint + "포인트</span>]<br>" +
+                "[course: <span style='color: blue;'>" + coursePoint + "포인트</span>]";
             map.put("content", content);
             notificationMapper.insertNotification(map);
         }

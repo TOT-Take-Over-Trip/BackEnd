@@ -138,7 +138,7 @@ public class CourseServiceImpl implements CourseService {
         courseMapper.takeOverCourse(map);
         HashMap<String, Object> notificationMap = new HashMap<>();
         notificationMap.put("memberId", originalMemberId);
-        String content = course.getTitle() + " 코스가 " +member.getName() +"님에게 인수되었습니다!";
+        String content = "<span style='color: blue;'>" + course.getTitle()  + " 코스가" + "</span><br>" + "<span style='color: red;'>" + member.getId() + "</span>" +"님에게 인수되었습니다!";
         notificationMap.put("content", content);
         notificationMapper.insertNotification(notificationMap);
     }
