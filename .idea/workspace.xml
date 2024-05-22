@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="be78911b-030a-4199-bc8a-9249caaec006" name="Changes" comment="feat: 특정 회원의 코스 조회 구현 - 컨트롤러">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/course/model/mapper/CourseMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/course/model/mapper/CourseMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/course/service/CourseServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/course/service/CourseServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/post/controller/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/post/controller/PostController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
