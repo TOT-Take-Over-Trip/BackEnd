@@ -164,11 +164,7 @@
     UPDATE
       POST
     SET
-      title = #{title}
-      ,   content = #{content}
-      ,       created_date = #{createdDate}
-      ,       updated_date = #{updatedDate}
-      ,       status = #{status}
+      title = #{title}, content = #{content}, thumbnail = #{thumbnail}
     WHERE
       post_id = #{postId}
   </update>

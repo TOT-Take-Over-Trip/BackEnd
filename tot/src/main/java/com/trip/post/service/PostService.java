@@ -30,7 +30,7 @@ public interface PostService {
 
     void createPost(PostDto postDto, MultipartFile thumbnail) throws IOException;
 
-    void updatePost(int postId, PostDto postDto);
+    void updatePost(PostDto postDto, MultipartFile thumbnail) throws IOException;
 
     void deletePost(int postId);
 

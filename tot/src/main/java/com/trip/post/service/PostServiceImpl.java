@@ -144,8 +144,19 @@ public class PostServiceImpl implements PostService{
     }
 
     @Override
-    public void updatePost(int postId, PostDto postDto) {
-        postMapper.updatePost(postId,postDto);
+    public void updatePost(PostDto postDto, MultipartFile thumbnail) throws IOException {
+        String fullPath = "";
+        if(thumbnail!=null){
+            //확장자 추출
+            int pos = thumbnail.getOriginalFilename().lastIndexOf(".");
+            String ext = thumbnail.getOriginalFilename().substring(pos+1);
+
+            String uuid = UUID.randomUUID().toString();
+            fullPath = fileDir + uuid + "." + ext;
+            thumbnail.transferTo(new File(fullPath));
+            postDto.setThumbnail(fullPath);
+        }
+        postMapper.updatePost(postDto);
     }
 
     @Override

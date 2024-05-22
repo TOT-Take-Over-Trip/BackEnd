@@ -125,9 +125,15 @@ public class PostController {
         postService.cancelLike(map);
     }
 
-    @PutMapping("/{postId}")
-    public void updatePost(@PathVariable int postId, @RequestBody PostDto postDto) {
-        postService.updatePost(postId,postDto);
+    @PutMapping(value = "/{postId}", consumes = {"multipart/form-data"})
+    public void updatePost(@RequestPart("postDto") PostDto postDto,
+        @RequestPart("thumbnail") MultipartFile thumbnail) {
+        try {
+            postService.updatePost(postDto, thumbnail);
+        } catch (IOException e) {
+            //TODO: 파일 업로드 예외처리
+            e.printStackTrace();
+        }
     }
 
     public void deletePost(@PathVariable int postId) {

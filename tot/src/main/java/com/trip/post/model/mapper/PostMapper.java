@@ -37,7 +37,7 @@ public interface PostMapper {
 
     void insertPost(PostDto postDto);
 
-    void updatePost(int postId, PostDto postDto);
+    void updatePost(PostDto postDto);
 
     void deletePostById(int postId);
 
