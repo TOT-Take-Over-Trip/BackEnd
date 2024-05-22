@@ -33,6 +33,11 @@ public class CourseController {
         return courseService.getCourseById(courseId, memberId);
     }
 
+    @GetMapping("/mycourse")
+    public List<CourseResponseDto> getCourseByMemberId(@RequestParam("memberId") int memberId){
+        return courseService.getCourseByMemberId(memberId);
+    }
+
     @PostMapping("/like/{courseId}")
     public void addLike(@PathVariable("courseId") int courseId, @RequestParam("memberId") int memberId){
         courseService.addLike(courseId,memberId);

@@ -42,5 +42,6 @@ public interface CourseService {
     // 코스 삭제 => 실제로 삭제하는게 아니라 상태값만 변경
     void deleteCourse(CourseDto course);
 
+    //특정 회원이 가지고 있는 코스 전부 조회
     List<CourseResponseDto> getCourseByMemberId(int memberId);
 }
