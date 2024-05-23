@@ -4,8 +4,10 @@ import com.trip.member.model.MemberDto;
 import com.trip.member.service.MemberService;
 import java.io.IOException;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/members")
 @CrossOrigin("*")
+@Slf4j
 public class MemberController {
 
     private final MemberService memberService;
@@ -38,5 +41,16 @@ public class MemberController {
     @PatchMapping("/{memberId}")
     public void deleteMember(@PathVariable("memberId") int memberId) {
         memberService.deleteMember(memberId);
+    }
+
+    @PostMapping(value = "/signup", consumes = {"multipart/form-data"})
+    public void signUpMember(@RequestPart("memberDto") MemberDto memberDto, @RequestPart(value = "profileImage", required = false) MultipartFile profileImage) {
+        try {
+            log.info("signupMember: {}", memberDto);
+            memberService.createMember(memberDto, profileImage);
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
     }
 }
