@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
@@ -39,7 +40,7 @@ public class AuthController {
 
 
     @PostMapping(value = "/signup", consumes = {"multipart/form-data"})
-    public void signUp(@RequestPart("signUpUserDto") SignUpUserDto signUpUserDto, @RequestPart("profileImage") MultipartFile profileImage)
+    public void signUp(@RequestPart("signUpUserDto") SignUpUserDto signUpUserDto, @RequestPart(value = "profileImage", required = false) MultipartFile profileImage)
         throws IOException {
         String encodedPassword = passwordEncoder.encode(signUpUserDto.getPassword());
         MemberDto member = MemberDto.builder()
@@ -54,7 +55,11 @@ public class AuthController {
 
 
     @GetMapping("/checkId")
-    public void checkId(@RequestParam String id){
-
+    public ResponseEntity<String> checkId(@RequestParam String id) {
+        MemberDto member = memberService.getMemberByLoginId(id);
+        if (member != null) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("이미 존재하는 아이디입니다.");
+        }
+        return ResponseEntity.ok("사용 가능한 아이디입니다.");
     }
 }
