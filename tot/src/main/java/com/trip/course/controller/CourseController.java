@@ -2,6 +2,7 @@ package com.trip.course.controller;
 
 import com.trip.course.model.CourseDto;
 import com.trip.course.model.dto.CourseResponseDto;
+import com.trip.course.model.dto.CoursesResponseDto;
 import com.trip.course.service.CourseService;
 import java.util.HashMap;
 import lombok.RequiredArgsConstructor;
@@ -21,7 +22,7 @@ public class CourseController {
     private final CourseService courseService;
 
     @GetMapping
-    public List<CourseResponseDto> getCourses(@RequestParam("memberId") int memberId) {
+    public CoursesResponseDto getCourses(@RequestParam("memberId") int memberId) {
         return courseService.getAllCourses(memberId);
     }
 

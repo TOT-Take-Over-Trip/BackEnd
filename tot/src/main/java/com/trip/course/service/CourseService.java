@@ -4,13 +4,14 @@ import com.trip.course.model.CourseDto;
 
 import com.trip.course.model.dto.CoursePlaceDto;
 import com.trip.course.model.dto.CourseResponseDto;
+import com.trip.course.model.dto.CoursesResponseDto;
 import java.util.HashMap;
 import java.util.List;
 
 public interface CourseService {
 
     // 전체 코스 조회
-    List<CourseResponseDto> getAllCourses(int memberId);
+    CoursesResponseDto getAllCourses(int memberId);
 
     // 특정 코스 조회
     CourseResponseDto getCourseById(int courseId, int memberId);

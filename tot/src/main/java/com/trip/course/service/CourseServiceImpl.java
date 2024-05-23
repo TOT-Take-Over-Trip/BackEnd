@@ -4,11 +4,17 @@ package com.trip.course.service;
 import com.trip.course.model.CourseDto;
 import com.trip.course.model.dto.CoursePlaceDto;
 import com.trip.course.model.dto.CourseResponseDto;
+import com.trip.course.model.dto.CoursesResponseDto;
 import com.trip.course.model.mapper.CourseMapper;
 import com.trip.member.model.MemberDto;
 import com.trip.member.model.mapper.MemberMapper;
 import com.trip.notification.model.mapper.NotificationMapper;
 import com.trip.place.model.mapper.PlaceMapper;
+import com.trip.post.model.dto.PostResponseDto;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -29,8 +35,18 @@ public class CourseServiceImpl implements CourseService {
 
     //모든 코스 조회
     @Override
-    public List<CourseResponseDto> getAllCourses(int memberId) {
+    public CoursesResponseDto getAllCourses(int memberId) {
+        CoursesResponseDto coursesResponseDto = new CoursesResponseDto();
         List<CourseResponseDto> courses = courseMapper.selectAllCourses(memberId);
+
+        //정렬
+        Collections.sort(courses, new Comparator<CourseResponseDto>() {
+            @Override
+            public int compare(CourseResponseDto o1, CourseResponseDto o2) {
+                return o2.getCourseLikeCount() - o1.getCourseLikeCount();
+            }
+        });
+        //courses
         for(CourseResponseDto course : courses){
             List<CoursePlaceDto> coursePlaces = getCoursePlaces(course.getCourseId());
             for(CoursePlaceDto coursePlaceDto : coursePlaces){
@@ -38,7 +54,29 @@ public class CourseServiceImpl implements CourseService {
             }
             course.setCoursePlaces(coursePlaces);
         }
-        return courses;
+
+        //topRankCourse
+        List<CourseResponseDto> topRankCourses = new ArrayList<>(); //좋아요 많은 데이터
+        int index = 0;
+        for(CourseResponseDto course : courses){
+            //30일 이상 지난 데이터를 사용하지 않기 위한 로직
+            String date = course.getUpdatedDate().split(" ")[0];
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            LocalDate parsedDate = LocalDate.parse(date, formatter);
+            LocalDate today = LocalDate.now();
+            long daysBetween = ChronoUnit.DAYS.between(parsedDate, today);
+            if(daysBetween<30){
+                topRankCourses.add(course);
+                index++;
+            }
+            //10개 이상 넘으면 탈출
+            if(index>=10) {
+                break;
+            }
+        }
+        coursesResponseDto.setCourses(courses);
+        coursesResponseDto.setTopRankCourses(topRankCourses);
+        return coursesResponseDto;
     }
 
     //단일 코스 조회
