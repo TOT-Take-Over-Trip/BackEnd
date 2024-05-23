@@ -6,18 +6,18 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Base64;
-import java.util.HashMap;
-import java.util.UUID;
+import java.util.*;
+
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import org.springframework.web.multipart.MultipartFile;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class MemberServiceImpl implements MemberService {
 
     private final MemberMapper memberMapper;
@@ -73,7 +73,24 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public void updateMember(int memberId, MemberDto memberDto) {
+    public void updateMember(int memberId, MemberDto memberDto, MultipartFile profileImage) throws IOException {
+        String fullPath = "";
+        log.info("profileImage: {}", profileImage);
+        memberDto.setMemberId(memberId);
+        if (profileImage != null) {
+            //확장자 추출
+            int pos = profileImage.getOriginalFilename().lastIndexOf(".");
+            String ext = profileImage.getOriginalFilename().substring(pos + 1);
+
+            String uuid = UUID.randomUUID().toString();
+            fullPath = fileDir + uuid + "." + ext;
+            profileImage.transferTo(new File(fullPath));
+            memberDto.setProfileImage(fullPath);
+            log.info("profileImage is Not null!!!!");
+        }
+        else {
+            memberDto.setProfileImage(memberMapper.getMemberProfileImage(memberId));
+        }
         memberMapper.updateMember(memberDto);
     }
 

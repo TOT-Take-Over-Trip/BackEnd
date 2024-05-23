@@ -17,7 +17,7 @@ public interface MemberService {
 
     void createMember(MemberDto memberDto, MultipartFile profileImage) throws IOException;
 
-    void updateMember(int memberId, MemberDto memberDto);
+    void updateMember(int memberId, MemberDto memberDto, MultipartFile profileImage) throws IOException;
 
     void deleteMember(int memberId);
 
