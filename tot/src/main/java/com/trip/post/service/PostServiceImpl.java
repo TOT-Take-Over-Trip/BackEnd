@@ -63,7 +63,7 @@ public class PostServiceImpl implements PostService{
                 index++;
             }
             //10개 이상 넘으면 탈출
-            if(index>=10) {
+            if(index>=5) {
                 break;
             }
         }
