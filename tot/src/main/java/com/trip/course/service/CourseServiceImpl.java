@@ -145,7 +145,8 @@ public class CourseServiceImpl implements CourseService {
             notificationMap.put("memberId", originalMemberId);
             String content =
                 "<span style='color: blue;'>" + course.getTitle() + " 코스가" + "</span><br>"
-                    + "<span style='color: red;'>" + member.getId() + "</span>" + "님에게 인수되었습니다!";
+                    + "<span style='color: red;'>" + member.getId() + "</span>" + "님에게 인수되었습니다!<br>"
+            +"획득한 포인트: " + "<span style='color: blue;'>" + coursePrice/2 +"P</span>";
             notificationMap.put("content", content);
             notificationMapper.insertNotification(notificationMap);
             //구매자 돈 감소
