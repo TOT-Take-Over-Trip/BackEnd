@@ -173,7 +173,7 @@
     UPDATE
       POST
     SET
-      status = #{status}
+      status = "inactive"
     WHERE
       post_id = #{postId}
   </update>

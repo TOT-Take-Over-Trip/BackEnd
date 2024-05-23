@@ -136,7 +136,8 @@ public class PostController {
         }
     }
 
-    public void deletePost(@PathVariable int postId) {
+    @PostMapping("/{postId}")
+    public void deletePost(@PathVariable(value = "postId") int postId) {
         postService.deletePost(postId);
     }
 }
