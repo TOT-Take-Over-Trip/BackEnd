@@ -9,6 +9,7 @@ import lombok.Setter;
 public class PostDto {
     private int postId;
     private int memberId;
+    private String memberName;
     private String title;
     private String content;
     private String thumbnail;

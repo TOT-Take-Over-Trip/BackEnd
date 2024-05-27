@@ -10,6 +10,6 @@ import java.util.List;
 @Getter
 @Setter
 public class PostsResponseDto {
-    List<PostDto> Posts = new ArrayList<>();
-    List<PostDto> topRankPosts = new ArrayList<>();
+    List<PostResponseDto> Posts = new ArrayList<>();
+    List<PostResponseDto> topRankPosts = new ArrayList<>();
 }

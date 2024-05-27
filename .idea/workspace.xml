@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be78911b-030a-4199-bc8a-9249caaec006" name="Changes" comment="feat: post 단일 조회 구현 - Post 정보와 Post 댓글 리스트를 응답으로 반환">
+    <list default="true" id="be78911b-030a-4199-bc8a-9249caaec006" name="Changes" comment="fix: 특정 회원의 코스 조회 coursePlace 정보 넣어주기">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/post/controller/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/post/controller/PostController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/post/service/PostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/post/service/PostService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/course/service/CourseServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/course/service/CourseServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tot/src/main/java/com/trip/post/service/PostServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/java/com/trip/post/service/PostServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tot/src/main/resources/mapper/post.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tot/src/main/resources/mapper/post.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +17,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="JUnit5 Test Class" />
         <option value="Interface" />
         <option value="Class" />
       </list>
@@ -48,6 +47,13 @@
     <property name="RequestMappingsPanelWidth0" value="75" />
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/tot/src/main/java/com/trip/notification" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -55,17 +61,38 @@
       <recent name="com.trip.auth.service" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tot/src/main/java/com/trip/notification" />
       <recent name="$PROJECT_DIR$/tot/src/main/resources" />
       <recent name="C:\SSAFY\projects\enjoytrip_framework_s10-team05\tot\src\main\resources" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.trip" />
     </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.trip.item.service" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.trip.notification.model" />
       <recent name="com.trip.post.service" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Spring Boot.TotApplication">
+    <configuration name="CSVDataConverter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.trip.place.util.CSVDataConverter" />
+      <module name="tot" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.trip.place.util.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TotApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="tot" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.trip.tot.TotApplication" />
@@ -74,6 +101,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.CSVDataConverter" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -103,7 +135,17 @@
       <workItem from="1715576346408" duration="1504000" />
       <workItem from="1715648779951" duration="61000" />
       <workItem from="1715650226817" duration="11861000" />
-      <workItem from="1715774114170" duration="5731000" />
+      <workItem from="1715774114170" duration="7185000" />
+      <workItem from="1715817640110" duration="20701000" />
+      <workItem from="1715907384215" duration="1899000" />
+      <workItem from="1715959622485" duration="27001000" />
+      <workItem from="1716116111155" duration="10032000" />
+      <workItem from="1716134034173" duration="49000" />
+      <workItem from="1716163528514" duration="10378000" />
+      <workItem from="1716176330203" duration="19862000" />
+      <workItem from="1716249544126" duration="6379000" />
+      <workItem from="1716264593476" duration="9460000" />
+      <workItem from="1716422415454" duration="6023000" />
     </task>
     <task id="LOCAL-00001" summary="feat: 멤버 로그인 아이디로 조회 추가">
       <created>1714974223046</created>
@@ -140,7 +182,105 @@
       <option name="project" value="LOCAL" />
       <updated>1715700087448</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="feat: post 썸네일 이미지 기능 추가 - 파일 업로드 처리">
+      <created>1715781066644</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1715781066644</updated>
+    </task>
+    <task id="LOCAL-00007" summary="feat: 썸네일 이미지 Base64 인코딩 하여 전송">
+      <created>1715826260644</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1715826260644</updated>
+    </task>
+    <task id="LOCAL-00008" summary="feat: 게시글에 대한 현재 사용자의 좋아요 여부 같이 반환하도록 로직 변경 - 통신시 memberId를 쿼리 파라미터로 함께 보내줘야 하며, 좋아요 여부를 체크하는 boolean 타입의 like반환">
+      <created>1716004306693</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1716004306693</updated>
+    </task>
+    <task id="LOCAL-00009" summary="feat: 게시글에 대한 현재 사용자의 좋아요 여부 같이 반환하도록 로직 변경 - 통신시 memberId를 쿼리 파라미터로 함께 보내줘야 하며, 좋아요 여부를 체크하는 boolean 타입의 like반환">
+      <created>1716006968802</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1716006968802</updated>
+    </task>
+    <task id="LOCAL-00010" summary="feat: 내가 쓴글, 댓글단글, 스크랩에 대해 좋아요 여부 반환하도록 수정">
+      <created>1716008856626</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1716008856626</updated>
+    </task>
+    <task id="LOCAL-00011" summary="feat: 게시글 좋아요 로직 구현, sql문 오류 정정, 주석 추가">
+      <created>1716010643468</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1716010643468</updated>
+    </task>
+    <task id="LOCAL-00012" summary="feat: 아이템, 주문 관련 CRUD 구현 - 주문 관련은 Item에서 전부 처리">
+      <created>1716104369402</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1716104369402</updated>
+    </task>
+    <task id="LOCAL-00013" summary="fix: 아이템, 주문 관련 버그 수정, 주문 생성시 트랜잭션 처리 및 예외처리 구현">
+      <created>1716108315997</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1716108315997</updated>
+    </task>
+    <task id="LOCAL-00014" summary="fix: DTO 변수명 수정, 빠진 변수 추가">
+      <created>1716193490018</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1716193490018</updated>
+    </task>
+    <task id="LOCAL-00015" summary="feat: 알림 추가, 알림 조회 구현">
+      <created>1716301355747</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1716301355747</updated>
+    </task>
+    <task id="LOCAL-00016" summary="feat: 특정 회원의 코스 조회 구현">
+      <created>1716307117241</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1716307117241</updated>
+    </task>
+    <task id="LOCAL-00017" summary="feat: 특정 회원의 코스 조회 구현 - 컨트롤러">
+      <created>1716356804201</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1716356804201</updated>
+    </task>
+    <task id="LOCAL-00018" summary="feat: 특정 회원의 코스 조회 구현 - 컨트롤러">
+      <created>1716356814529</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1716356814529</updated>
+    </task>
+    <task id="LOCAL-00019" summary="fix: 특정 회원의 코스 조회 coursePlace 정보 넣어주기">
+      <created>1716357593427</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1716357593427</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -163,6 +303,18 @@
     <MESSAGE value="feat: Spring Security와 JWT를 위한 설정 추가" />
     <MESSAGE value="feat: JWT를 이용한 회원가입, 로그인 기능 구현" />
     <MESSAGE value="feat: post 단일 조회 구현 - Post 정보와 Post 댓글 리스트를 응답으로 반환" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: post 단일 조회 구현 - Post 정보와 Post 댓글 리스트를 응답으로 반환" />
+    <MESSAGE value="feat: post 썸네일 이미지 기능 추가 - 파일 업로드 처리" />
+    <MESSAGE value="feat: 썸네일 이미지 Base64 인코딩 하여 전송" />
+    <MESSAGE value="feat: 게시글에 대한 현재 사용자의 좋아요 여부 같이 반환하도록 로직 변경 - 통신시 memberId를 쿼리 파라미터로 함께 보내줘야 하며, 좋아요 여부를 체크하는 boolean 타입의 like반환" />
+    <MESSAGE value="feat: 내가 쓴글, 댓글단글, 스크랩에 대해 좋아요 여부 반환하도록 수정" />
+    <MESSAGE value="feat: 게시글 좋아요 로직 구현, sql문 오류 정정, 주석 추가" />
+    <MESSAGE value="feat: 아이템, 주문 관련 CRUD 구현 - 주문 관련은 Item에서 전부 처리" />
+    <MESSAGE value="fix: 아이템, 주문 관련 버그 수정, 주문 생성시 트랜잭션 처리 및 예외처리 구현" />
+    <MESSAGE value="fix: DTO 변수명 수정, 빠진 변수 추가" />
+    <MESSAGE value="feat: 알림 추가, 알림 조회 구현" />
+    <MESSAGE value="feat: 특정 회원의 코스 조회 구현" />
+    <MESSAGE value="feat: 특정 회원의 코스 조회 구현 - 컨트롤러" />
+    <MESSAGE value="fix: 특정 회원의 코스 조회 coursePlace 정보 넣어주기" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: 특정 회원의 코스 조회 coursePlace 정보 넣어주기" />
   </component>
 </project>

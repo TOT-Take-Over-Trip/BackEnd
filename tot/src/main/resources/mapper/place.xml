@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.trip.place.model.mapper.PlaceMapper">
+
+  <resultMap type="PlaceDto" id="place">
+    <result column="place_id" property="placeId" />
+    <result column="name" property="name" />
+    <result column="address" property="address" />
+    <result column="latitude" property="latitude" />
+    <result column="longitude" property="longitude" />
+    <result column="sido_code" property="sidoCode" />
+    <result column="gugun_code" property="gugunCode" />
+    <result column="thumbnail" property="thumbnail" />
+    <result column="content" property="content" />
+    <result column="created_date" property="createdDate" />
+    <result column="updated_date" property="updatedDate" />
+    <result column="status" property="status" />
+  </resultMap>
+
+  <insert id="insertPlace" parameterType="placeDto">
+    insert into place(name, address, latitude, longitude, thumbnail, content, sido_code, gugun_code)
+    values(#{name},#{address},#{latitude},#{longitude},#{thumbnail},#{content},#{sidoCode},#{gugunCode})
+  </insert>
+
+  <!--이름으로 조회(데이터 전처리를 위해 사용)-->
+  <select id="selectPlace" parameterType="String" resultMap="place">
+    select *
+    from place
+    where name = #{name}
+  </select>
+
+  <select id="selectAll" resultMap="place">
+    select *
+    from place
+    where status = 'active'
+  </select>
+
+  <select id="selectById" parameterType="int" resultMap="place">
+    select *
+    from place
+    where place_id = #{placeId}
+  </select>
+
+  <!--이름으로 Like 검색-->
+  <select id="selectByKeyword" parameterType="String" resultMap="place">
+    select *
+    from place
+    WHERE name LIKE CONCAT('%', #{keyword}, '%')
+  </select>
+
+
+
+
+</mapper>

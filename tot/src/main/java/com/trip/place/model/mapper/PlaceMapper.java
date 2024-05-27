@@ -9,7 +9,9 @@ import java.util.List;
 public interface PlaceMapper {
 
     List<PlaceDto> selectAll();
-    PlaceDto selectById(Long id);
-    void insert(PlaceDto place);
+    PlaceDto selectById(int id);
+    void insertPlace(PlaceDto place);
+    PlaceDto selectPlace(String name);
+    List<PlaceDto> selectByKeyword(String keyword);
 
 }

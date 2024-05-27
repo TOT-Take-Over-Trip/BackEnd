@@ -1,8 +1,12 @@
 package com.trip.course.controller;
 
 import com.trip.course.model.CourseDto;
+import com.trip.course.model.dto.CourseResponseDto;
+import com.trip.course.model.dto.CoursesResponseDto;
 import com.trip.course.service.CourseService;
+import java.util.HashMap;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -11,45 +15,65 @@ import java.util.List;
 @RestController
 @RequestMapping("/courses")
 @RequiredArgsConstructor
+@CrossOrigin("*")
+@Slf4j
 public class CourseController {
 
     private final CourseService courseService;
 
-    // TODO: 구현해야 함
     @GetMapping
-    public List<CourseDto> getCourses() {
-        return courseService.selectAllCourses();
+    public CoursesResponseDto getCourses(@RequestParam("memberId") int memberId) {
+        return courseService.getAllCourses(memberId);
     }
 
-    // TODO: 구현해야 함
     @PostMapping
     public void addCourse(@RequestBody CourseDto course) {
         courseService.insertCourse(course);
     }
 
-    // TODO: 구현해야 함
     @GetMapping("/{courseId}")
-    public CourseDto getCourse(@PathVariable(value = "courseId") Long courseId) {
-        return courseService.selectCourseById(courseId);
+    public CourseResponseDto getCourseById(@PathVariable int courseId, @RequestParam("memberId") int memberId) {
+        return courseService.getCourseById(courseId, memberId);
     }
 
+    @GetMapping("/mycourse")
+    public List<CourseResponseDto> getCourseByMemberId(@RequestParam("memberId") int memberId){
+        return courseService.getCourseByMemberId(memberId);
+    }
+
+    @PostMapping("/{courseId}/like")
+    public void addLike(@PathVariable("courseId") int courseId, @RequestParam("memberId") int memberId){
+        courseService.addLike(courseId,memberId);
+    }
+
+    @PostMapping("/{courseId}/unlike")
+    public void cancelLike(@PathVariable("courseId") int courseId, @RequestParam("memberId") int memberId){
+        courseService.cancelLike(courseId,memberId);
+    }
 
     // TODO: 구현해야 함
     @PutMapping("/{courseId}")
-    public void updateCourse(@PathVariable(value = "courseId") Long courseId, @RequestBody CourseDto course) {
-        courseService.modifyCourse(course);
+    public void updateCourse(@PathVariable(value = "courseId") int courseId, @RequestBody CourseDto course) {
+        courseService.modifyCourse(courseId, course);
     }
 
-    // TODO: 구현해야 함
-    // 이거 memberId도 필요한듯
+    // 코스 인수
     @PostMapping("/takeover/{courseId}")
-    public void takeover(@PathVariable(value = "courseId") Long courseId) {
-//        courseService.takeOverCourse();
+    public void takeover(@PathVariable int courseId, @RequestParam("memberId") int memberId) {
+        courseService.takeOverCourse(courseId, memberId);
     }
 
     // TODO: 구현해야 함
     @PatchMapping("/{courseId}")
     public void patchCourse(@PathVariable(value = "courseId") Long courseId, @RequestBody CourseDto course) {
 
+    }
+
+    @PostMapping("/delete/{courseId}")
+    public void deleteCourse(@PathVariable(value = "courseId") int courseId) {
+        log.info("CourseController deleteCourse 호출");
+        CourseDto courseDto = new CourseDto();
+        courseDto.setCourseId(courseId);
+        courseService.deleteCourse(courseDto);
     }
 }

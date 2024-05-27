@@ -4,13 +4,28 @@
 
 <mapper namespace="com.trip.post.model.mapper.PostMapper">
 
-  <resultMap type="postDto" id="post">
+ <!-- <resultMap type="postDto" id="post">
     <result column="post_id" property="postId" />
     <result column="member_id" property="memberId" />
+    <result column="member_name" property="memberName" />
     <result column="title" property="title" />
     <result column="content" property="content" />
     <result column="thumbnail" property="thumbnail" />
     <result column="post_like_count" property="postLikeCount" />
+    <result column="created_date" property="createdDate" />
+    <result column="updated_date" property="updatedDate" />
+    <result column="status" property="status" />
+  </resultMap>-->
+
+  <resultMap type="postResponseDto" id="postResponse">
+    <result column="post_id" property="postId" />
+    <result column="member_id" property="memberId" />
+    <result column="member_name" property="memberName" />
+    <result column="title" property="title" />
+    <result column="content" property="content" />
+    <result column="thumbnail" property="thumbnail" />
+    <result column="post_like_count" property="postLikeCount" />
+    <result column="is_like" property="isLike" />
     <result column="created_date" property="createdDate" />
     <result column="updated_date" property="updatedDate" />
     <result column="status" property="status" />
@@ -20,51 +35,136 @@
     <result column="post_comment_id" property="postCommentId" />
     <result column="post_id" property="postId" />
     <result column="member_id" property="memberId" />
+    <result column="member_name" property="memberName" />
     <result column="content" property="content" />
     <result column="created_date" property="createdDate" />
     <result column="updated_date" property="updatedDate" />
     <result column="status" property="status" />
   </resultMap>
 
-  <select id="selectAllPosts" resultMap="post">
+  <!--전체 게시글 조회-->
+  <select id="selectAllPosts" parameterType="int" resultMap="postResponse">
     SELECT
-      post_id, member_id, title, content, thumbnail, post_like_count, created_date, updated_date, status
+      DISTINCT p.*,
+      COALESCE(pl.is_like, 0) as is_like
     FROM
-      post
+      post p
+        LEFT JOIN (SELECT post_id, is_like FROM post_like WHERE member_id = #{memberId}) pl ON p.post_id = pl.post_id
+    where p.status= 'active';
   </select>
 
-  <select id="selectPostById" parameterType="int" resultMap="post">
+  <!--특정 게시글 조회-->
+  <select id="selectPostById" parameterType="map" resultMap="postResponse">
     SELECT
-      post_id, member_id, title, content, thumbnail, post_like_count, created_date, updated_date, status
+      DISTINCT p.*,
+      COALESCE(pl.is_like, 0) as is_like
     FROM
-      post
+      post p
+        LEFT JOIN (SELECT post_id, is_like FROM post_like WHERE member_id = #{memberId}) pl ON p.post_id = pl.post_id
     WHERE
-      post_id = #{postId}
+      p.post_id = #{postId}
   </select>
 
+  <!--특정 게시글 댓글 조회-->
   <select id="selectPostCommentsById" parameterType="int" resultMap="postComment">
     SELECT
-      post_comment_id, post_id, member_id, content, created_date, updated_date, status
+      post_comment_id, post_id, member_id, member_name, content, created_date, updated_date, status
     FROM
       post_comment
     WHERE
       post_id = #{postId}
   </select>
-  
+
+  <!--내가 작성한 게시글 조회-->
+  <select id="selectPostsByMemberId" parameterType="int" resultMap="postResponse">
+    SELECT
+      DISTINCT p.*,
+      COALESCE(pl.is_like, 0) as is_like
+    FROM
+      post p
+        LEFT JOIN (SELECT post_id, is_like FROM post_like WHERE member_id = #{memberId}) pl ON p.post_id = pl.post_id
+    WHERE status = 'active' and member_id = #{memberId}
+  </select>
+
+  <!--내가 댓글단 게시글 조회-->
+  <select id="selectPostsByMemberComments" parameterType="int" resultMap="postResponse">
+    SELECT DISTINCT p.*, COALESCE(pl.is_like, 0) as is_like
+    FROM post p
+           LEFT JOIN (SELECT post_id, is_like FROM post_like WHERE member_id = #{memberId}) pl ON p.post_id = pl.post_id
+           INNER JOIN post_comment pc ON p.post_id = pc.post_id
+    WHERE pc.member_id = #{memberId}
+  </select>
+
+  <!--내가 좋아요 누른 게시글 조회-->
+  <select id="selectPostsByMemberLike" parameterType="int" resultMap="postResponse">
+    SELECT DISTINCT p.*, pl.is_like
+    FROM post p
+           INNER JOIN post_like pl ON p.post_id = pl.post_id
+    WHERE pl.member_id = #{memberId} and pl.is_like = true;
+  </select>
+
+  <!--게시글 등록-->
   <insert id="insertPost" parameterType="PostDto">
-    INSERT INTO Post(member_id, title, content, thumbnail)
-    VALUES(#{memberId}, #{title}, #{content}, #{thumbnail})
+    INSERT INTO Post(member_id, member_name, title, content, thumbnail)
+    VALUES(#{memberId}, #{memberName}, #{title}, #{content}, #{thumbnail})
   </insert>
+
+  <!--게시글 댓글 등록-->
+  <insert id="insertPostComment" parameterType="PostCommentDto" useGeneratedKeys="true" keyProperty="postCommentId">
+    INSERT into post_comment(post_id, member_id, content, member_name)
+    VALUES (#{postId}, #{memberId}, #{content}, #{memberName})
+    <selectKey keyProperty="postCommentId" resultType="int" order="AFTER">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+  </insert>
+
+  <!--게시글 댓글 단일 조회(댓글 실시간 반영을 위해 사용)-->
+  <select id="selectPostCommentByPostCommentId" parameterType="int" resultMap="postComment">
+    SELECT *
+    FROM post_comment
+    WHERE post_comment_id = #{postCommentId}
+  </select>
+
+<!--  &lt;!&ndash;좋아요 누르기 -없으면 insert 있으면 상태변화&ndash;&gt;-->
+<!--  <insert id="insertOrUpdateLike" parameterType="map">-->
+<!--    INSERT INTO post_like (post_id, member_id, is_like)-->
+<!--    VALUES (#{postId}, #{memberId}, 1)-->
+<!--    ON DUPLICATE KEY UPDATE is_like = NOT is_like;-->
+<!--  </insert>-->
+
+  <!--좋아요 활성화-->
+  <insert id="addLike" parameterType="map">
+    INSERT INTO post_like (post_id, member_id, is_like)
+    VALUES (#{postId}, #{memberId}, 1)
+    ON DUPLICATE KEY UPDATE is_like = NOT is_like;
+  </insert>
+
+  <!--좋아요 취소-->
+  <update id="cancelLike" parameterType="map">
+    UPDATE post_like
+    SET is_like = false
+    WHERE member_id = #{memberId} and post_id = #{postId}
+  </update>
+
+  <!--post 좋아요 개수 증가-->
+  <update id="addLikeCount" parameterType="int">
+    UPDATE post
+    SET post_like_count = post_like_count + 1
+    WHERE post_id = #{postId}
+  </update>
+
+  <!--post 좋아요 개수 감소-->
+  <update id="cancelLikeCount" parameterType="int">
+    UPDATE post
+    SET post_like_count = post_like_count - 1
+    WHERE post_id = #{postId}
+  </update>
 
   <update id="updatePost" parameterType="PostDto">
     UPDATE
       POST
     SET
-      title = #{title}
-      ,   content = #{content}
-      ,       created_date = #{createdDate}
-      ,       updated_date = #{updatedDate}
-      ,       status = #{status}
+      title = #{title}, content = #{content}, thumbnail = #{thumbnail}
     WHERE
       post_id = #{postId}
   </update>
@@ -73,7 +173,7 @@
     UPDATE
       POST
     SET
-      status = #{status}
+      status = "inactive"
     WHERE
       post_id = #{postId}
   </update>

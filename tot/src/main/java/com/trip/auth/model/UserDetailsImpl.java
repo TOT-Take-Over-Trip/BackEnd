@@ -22,10 +22,10 @@ public class UserDetailsImpl implements UserDetails {
     private Collection<? extends GrantedAuthority> authorities;
 
     public UserDetailsImpl(MemberDto member) {
-        this.memberId = member.getMemberId();
-        this.id = member.getId();
-        this.password = member.getPassword();
-        //TODO: 권한 설정
+//        this.memberId = member.getMemberId();
+//        this.id = member.getId();
+//        this.password = member.getPassword();
+        //TODO: 권한 설정\
 //        if (member.isAdmin()) {
 //            this.authorities = Collections.singletonList(new SimpleGrantedAuthority("ROLE_ADMIN"));
 //        } else {

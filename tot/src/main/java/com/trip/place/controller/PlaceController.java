@@ -1,30 +1,43 @@
 package com.trip.place.controller;
 
 import com.trip.place.model.PlaceDto;
+import com.trip.place.service.PlaceService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/places")
+@CrossOrigin("*")
 public class PlaceController {
 
+    private final PlaceService placeService;
 
-    @GetMapping
-    public List<PlaceDto> getPlaces() {
-        List<PlaceDto> places = new ArrayList<PlaceDto>();
-        return places;
+    @PostMapping("/csv")
+    public void addCsvData(){
+        placeService.csvDataInsert();
     }
 
-    @GetMapping("/{id}")
-    public PlaceDto getPlace(@PathVariable(value = "id") Long placeId) {
-        PlaceDto place = new PlaceDto();
-        return place;
+    @GetMapping
+    public List<PlaceDto> getPlaces(@RequestParam("keyword") String keyword) {
+        if(keyword == null) {
+            return placeService.getPlaces();
+        }
+        else{
+            return placeService.getByKeyword(keyword);
+        }
+    }
+
+    @GetMapping("/{placeId}")
+    public PlaceDto getPlace(@PathVariable int placeId) {
+        return placeService.getPlaceById(placeId);
     }
 
     @PostMapping
     public void addPlace(@RequestBody PlaceDto place) {
-
+        placeService.insertPlace(place);
     }
 }
