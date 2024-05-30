@@ -33,4 +33,4 @@ build/
 .vscode/
 
 ### dbinfo ###
-src/main/resources/dbinfo.properties
+src/main/resources/info.properties
