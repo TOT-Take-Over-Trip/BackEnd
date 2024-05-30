@@ -63,13 +63,12 @@ public class CourseController {
         courseService.takeOverCourse(courseId, memberId);
     }
 
-    // TODO: 구현해야 함
-    @PatchMapping("/{courseId}")
-    public void patchCourse(@PathVariable(value = "courseId") Long courseId, @RequestBody CourseDto course) {
-
+    @PostMapping("/{courseId}/hit")
+    public void updateHit(@PathVariable(value = "courseId") int courseId) {
+        courseService.updateHit(courseId);
     }
 
-    @PostMapping("/delete/{courseId}")
+    @PostMapping("/{courseId}/delete")
     public void deleteCourse(@PathVariable(value = "courseId") int courseId) {
         log.info("CourseController deleteCourse 호출");
         CourseDto courseDto = new CourseDto();

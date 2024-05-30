@@ -220,4 +220,9 @@ public class CourseServiceImpl implements CourseService {
         }
         return courses;
     }
+
+    @Override
+    public void updateHit(int courseId) {
+        courseMapper.updateHit(courseId);
+    }
 }
