@@ -46,5 +46,5 @@ public interface CourseService {
     //특정 회원이 가지고 있는 코스 전부 조회
     List<CourseResponseDto> getCourseByMemberId(int memberId);
 
-    void updateHit(int courseId);
+    void updateHit(int courseId, int memberId);
 }

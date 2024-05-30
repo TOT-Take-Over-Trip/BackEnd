@@ -64,8 +64,8 @@ public class CourseController {
     }
 
     @PostMapping("/{courseId}/hit")
-    public void updateHit(@PathVariable(value = "courseId") int courseId) {
-        courseService.updateHit(courseId);
+    public void updateHit(@PathVariable(value = "courseId") int courseId, @RequestParam("memberId") int memberId) {
+        courseService.updateHit(courseId,memberId);
     }
 
     @PostMapping("/{courseId}/delete")

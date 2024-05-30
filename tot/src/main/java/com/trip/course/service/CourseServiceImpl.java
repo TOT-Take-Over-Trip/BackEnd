@@ -1,6 +1,7 @@
 package com.trip.course.service;
 
 
+import com.trip.config.RedisUtil;
 import com.trip.course.model.CourseDto;
 import com.trip.course.model.dto.CoursePlaceDto;
 import com.trip.course.model.dto.CourseResponseDto;
@@ -12,6 +13,7 @@ import com.trip.notification.model.mapper.NotificationMapper;
 import com.trip.place.model.mapper.PlaceMapper;
 import com.trip.post.model.dto.PostResponseDto;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -32,6 +34,7 @@ public class CourseServiceImpl implements CourseService {
     private final MemberMapper memberMapper;
     private final PlaceMapper placeMapper;
     private final NotificationMapper notificationMapper;
+    private final RedisUtil redisUtil;
 
     //모든 코스 조회
     @Override
@@ -87,7 +90,7 @@ public class CourseServiceImpl implements CourseService {
         map.put("memberId", memberId);
         CourseResponseDto course = courseMapper.selectCourseById(map);
         if(memberId!=course.getMemberId()) {
-            courseMapper.updateHit(courseId); //내가 만든 코스가 아니면 조회수 증가
+            updateHit(courseId,memberId); //내가 만든 코스가 아니면 조회수 증가(이미 조회했으면 증가 x)
         }
         List<CoursePlaceDto> coursePlaces = getCoursePlaces(course.getCourseId());
         for(CoursePlaceDto coursePlaceDto : coursePlaces){
@@ -221,8 +224,40 @@ public class CourseServiceImpl implements CourseService {
         return courses;
     }
 
+    /**
+     * 어떤 유저가 해당 코스를 이미 조회했을 경우 조회수를 높이지 않도록 Redis를 이용하여 중복검사 진행
+     */
     @Override
-    public void updateHit(int courseId) {
-        courseMapper.updateHit(courseId);
+    public void updateHit(int courseId, int memberId) {
+        String memberViewList = redisUtil.getData(String.valueOf(memberId));
+        //조회되는게 없는 경우 예외처리후 redis 저장 및 조회수 증가
+        if (memberViewList == null) {
+            //value값 구분을 위해 - 넣어주기
+            redisUtil.setDateExpire(String.valueOf(memberId), courseId + "-",
+                calculateTimeUntilMidnight());
+            courseMapper.updateHit(courseId);
+            return;
+        }
+
+        String[] redisValueArray = memberViewList.split("-");   //해당 member가 이미 조회한 courseId목록
+        boolean isView = false; //member가 해당코스를 오늘 조회했는지
+        for (int i = 0; i < redisValueArray.length; i++) {
+            if(redisValueArray[i].equals(String.valueOf(courseId))){
+                isView = true;
+                break;
+            }
+        }
+        if(!isView){
+            redisUtil.setDateExpire(String.valueOf(memberId), memberViewList+courseId + "-",
+                calculateTimeUntilMidnight());
+            courseMapper.updateHit(courseId);
+        }
+    }
+
+    //자정까지의 시간 계산
+    public static long calculateTimeUntilMidnight() {
+        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime midnight = now.truncatedTo(ChronoUnit.DAYS).plusDays(1);
+        return ChronoUnit.SECONDS.between(now, midnight);
     }
 }
