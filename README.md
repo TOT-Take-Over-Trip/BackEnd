@@ -11,20 +11,6 @@
 > 멤버 구성: 2명(Back-end & Front-end)
 > 
 
-> 나의 역할
-> 
-- Back-end :
-    - 데이터베이스 **ERD** 설계
-    - **API** 개발
-    - **MyBatis SQL Mapper** 구현
-    - **JWT**를 통한 로그인 및 암호화 구현
-    - **Redis**를 이용한 조회수 중복방지 구현
-- Front-end :
-    - **Vue & Router**를 통한 **SPA** 웹 페이지 설계
-    - **vue & axios**를 통한 서버와의 데이터 통신 및 이미지 업로드 구현
-    - **vue-quill**을 활용한 게시글 등록화면 구현
-    - **Kakao Map API**를 사용하여 지도서비스 구현
-
 ## 프로젝트 소개
 
 여행 정보 플랫폼 **TOT(Take Over Trip)은** 사용자들이 작성한 여행코스와 리뷰를 제공합니다. 글을 작성하여 포인트를 획득하고, 마음에 드는 코스가 있다면 코스를 인수하여 더 많은 포인트를 획득할 수 있습니다!
@@ -39,7 +25,25 @@
 
 ## 기술 스택
 
-**Java, Spring, MyBatis, Redis, MySQL, Vue3, Git**
+### Frontend
+<div>
+<img src="https://img.shields.io/badge/Vue.js-4FC08D?style=flat-square&logo=Vue.js&logoColor=white"/>
+<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black"/>
+<img src="https://img.shields.io/badge/Tailwind CSS-06B6D4?style=flat-square&logo=Tailwind CSS&logoColor=white"/>
+</div>
+
+### Backend
+![Java](https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java&logoColor=white)
+![Spring Boot](https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)
+<img src="https://img.shields.io/badge/MyBatis-000000?style=for-the-badge&logo=MyBatis&logoColor=white"> 
+<img src="https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=Redis&logoColor=white"> 
+![MySQL](https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+
+### 협업 툴
+![Git](https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white)
+![Notion](https://img.shields.io/badge/notion-000000?style=for-the-badge&logo=notion&logoColor=white)
+
+---
 
 ## ERD
 
@@ -153,22 +157,3 @@
 - TTL(데이터 자동 삭제)은 자정으로 설정
 
 ---  
-# 기술 스택
-
-### Frontend
-<div>
-<img src="https://img.shields.io/badge/Vue.js-4FC08D?style=flat-square&logo=Vue.js&logoColor=white"/>
-<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black"/>
-<img src="https://img.shields.io/badge/Tailwind CSS-06B6D4?style=flat-square&logo=Tailwind CSS&logoColor=white"/>
-</div>
-
-### Backend
-![Java](https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java&logoColor=white)
-![Spring Boot](https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)
-<img src="https://img.shields.io/badge/MyBatis-000000?style=for-the-badge&logo=MyBatis&logoColor=white"> 
-<img src="https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=Redis&logoColor=white"> 
-![MySQL](https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
-
-### 협업 툴
-![Git](https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white)
-![Notion](https://img.shields.io/badge/notion-000000?style=for-the-badge&logo=notion&logoColor=white)
