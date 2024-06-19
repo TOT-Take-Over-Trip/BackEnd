@@ -61,7 +61,7 @@
 
 <img src="https://github.com/TOT-Take-Over-Trip/BackEnd/assets/75566606/37859fd8-4598-4ca5-811a-45b19a6ed2b1"/>  
 
-<p align="center"> <a href="https://youtu.be/pZl-HfEG6f4?si=88JfUNoFrUAwjAqw" style="font-size:20em;">유튜브 링크</a> </p>
+<p align="center"> <a href="https://youtu.be/pZl-HfEG6f4?si=88JfUNoFrUAwjAqw" style="font-size:20em;">시연영상 유튜브 링크</a> </p>
 
 ---
 
