@@ -21,6 +21,12 @@
 - 매일 자신이 작성한 리뷰, 가지고 있는 코스의 조회수, 좋아요 개수에 따라 포인트를 획득할 수 있습니다!
 - 이를 통해 획득한 포인트는 상품으로 교환할 수 있어요.
 
+> **[기술 스택](#기술-스택)**
+> 
+> **[서비스 시연영상](#서비스-시연-영상)**
+> 
+> **[Trouble Shooting 내역](#trouble-shooting)**
+> 
 ---
 
 ## 기술 스택
@@ -51,56 +57,11 @@
 
 ---
 
-## 서비스 화면
+## 서비스 시연 영상
 
-### **메인화면, 회원가입 로그인**
+<img src="https://github.com/TOT-Take-Over-Trip/BackEnd/assets/75566606/37859fd8-4598-4ca5-811a-45b19a6ed2b1"/>  
 
-<img width="1440" alt="메인화면" src="https://github.com/TOT-Take-Over-Trip/BackEnd/assets/75566606/badf4578-f3e9-4426-b0b1-f2667d7a3c01">
-
-<img width="1440" alt="회원가입" src="https://github.com/TOT-Take-Over-Trip/BackEnd/assets/75566606/abdecdce-c6ac-4fed-95c6-d56d164a99d6">
-
-<img width="1440" alt="로그인화면" src="https://github.com/TOT-Take-Over-Trip/BackEnd/assets/75566606/2b37961b-b2b5-4bc3-adab-1af8db597487">
-
-<img width="1440" alt="내정보" src="https://github.com/TOT-Take-Over-Trip/BackEnd/assets/75566606/5eb4496f-a93b-416f-a63b-a19869af6bb1">
-
-- JWT를 통한 로그인, 로그아웃 구현
-
-### **리뷰 게시판**
-
-<img width="600" alt="전체 리뷰보기" src="https://github.com/TOT-Take-Over-Trip/BackEnd/assets/75566606/18fe075e-f5ab-4b5f-83fd-74325bbda0c2">
-
-<img width="261" alt="리뷰 상단바" src="https://github.com/TOT-Take-Over-Trip/BackEnd/assets/75566606/94ce7be4-a3f6-4a6d-9665-97181620293d">
-
-- 좋아요 개수에 따라 상위 TOP 리뷰 게시글들 슬라이드로 제공
-- 리뷰 게시글 유형에 따른 조회 가능
-
-<img width="1440" alt="리뷰상세보기1" src="https://github.com/TOT-Take-Over-Trip/BackEnd/assets/75566606/f6873170-98d1-4f0b-9358-3966a99d4b51">
-
-<img width="1440" alt="리뷰상세보기2" src="https://github.com/TOT-Take-Over-Trip/BackEnd/assets/75566606/520d23d0-cd08-42fe-9dae-ead0b9889ed4">
-
-<img width="1440" alt="리뷰 등록" src="https://github.com/TOT-Take-Over-Trip/BackEnd/assets/75566606/cf61f271-f4ed-4d14-94a9-7731354c2649">
-
-- Vue-Quill을 통한 이미지와 게시글 등록 가능
-
-### 코스
-
-<img width="1464" alt="전체 코스보기" src="https://github.com/TOT-Take-Over-Trip/BackEnd/assets/75566606/5b37fa37-9565-4352-bc71-01b7c68a4908">
-
-<img width="1440" alt="코스 상세보기(남 코스일떄)" src="https://github.com/TOT-Take-Over-Trip/BackEnd/assets/75566606/3d0bfb52-94ee-4ead-8d45-628833c2b8f1">
-
-<img width="1440" alt="코스 상세보기(인수 가능)" src="https://github.com/TOT-Take-Over-Trip/BackEnd/assets/75566606/0b1801ef-20e2-4968-a0a6-f0dd59e0c56f">
-
-- 공공데이터에서 제공하는 관광지 정보를 기본 데이터로 사용. 성능을 위해 API 호출이 아닌 전처리를 통해 DB에 저장한 데이터 사용.
-- 사용자가 지도에 마커를 찍고 장소를 직접 등록할 수 있음. 이는 DB에 저장되어 다른 사용자도 이용 가능
-- Vue-Draggable을 통해 순서를 자유자재로 변경할 수 있고, 이를 반영하여 지도에 표시됨.
-- 내가 소유중인 코스면 순서 변경 및 장소 추가가 가능.
-- 내가 소유중인 코스가 아니면 포인트를 통해 인수한 뒤 수정과 추가가 가능해짐.
-
-### 상점
-
-<img width="1440" alt="아이템 구매화면" src="https://github.com/TOT-Take-Over-Trip/BackEnd/assets/75566606/aefdf75d-4329-45a9-af7d-183c1db888e6">
-
-- 상점에서 보유한 포인트로 상품과 교환할 수 있음.
+<p align="center"> <a href="https://youtu.be/pZl-HfEG6f4?si=88JfUNoFrUAwjAqw" style="font-size:20em;">유튜브 링크</a> </p>
 
 ---
 
